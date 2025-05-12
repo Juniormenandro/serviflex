@@ -57,7 +57,7 @@ const AppointmentStatusSheet = () => {
           exit={{ opacity: 0, x: 20 }}
           transition={{ duration: 0.3 }}
           onClick={() => setShowList(true)}
-          className="w-full flex items-center space-x-2 px-2 py-2 mt-4 rounded-lg border border-slate-700 text-base md:text-2xl md:font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 transition-all"
+          className="w-full flex items-center space-x-1 px-2 py-2 mt-4 text-base md:text-2xl rounded-lg border border-slate-700 md:font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 transition-all"
         >
           <Calendar className="h-5 w-5 md:h-8 md:w-8 text-green-400" />
           <span>View Status scheduling</span>

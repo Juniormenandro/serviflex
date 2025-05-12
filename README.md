@@ -94,7 +94,7 @@ npm run dev
 ## 🤝 Connect With Me
 
 Made with 💚 by Jose Carlos Cavalcante Júnior
-📫 [your.email@example.com](jojuniorjo@gmail.com)
+📫 [jojuniorjo@gmail.com](jojuniorjo@gmail.com)
 🔗 [LinkedIn](https://www.linkedin.com/in/juniormenandro/)
 🌐 [Portfolio](https://yourwebsite.com)
 

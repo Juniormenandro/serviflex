@@ -92,8 +92,8 @@ const Footer = () => {
         </div>
         
         <div className="mt-12 pt-8 border-t border-slate-700/50 text-center text-sm">
+        <p className="mt-1">Criado com <span className="text-red-500">&hearts;</span> Serviflex </p>
           <p>&copy; {new Date().getFullYear()} ServiFlex. Todos os direitos reservados.</p>
-          <p className="mt-1">Criado com <span className="text-red-500">&hearts;</span> Serviflex </p>
         </div>
       </div>
     </motion.footer>
