@@ -84,23 +84,18 @@ It's not just a system — it's a professional portfolio and a prototype of what
 ## 🚀 Running Locally
 
 ```bash
-git clone https://github.com/yourusername/serviflex.git
+git clone https://github.com/Juniormenandro/serviflex.git
 cd serviflex
 npm install
 npm run dev
 ```
-
-Make sure you add your Supabase environment variables in a `.env.local` file.
-
-VITE_SUPABASE_URL=https://xxxxx.supabase.co
-VITE_SUPABASE_ANON_KEY=eyJhbGciOi...
 ---
 
 ## 🤝 Connect With Me
 
 Made with 💚 by Jose Carlos Cavalcante Júnior
-📫 [your.email@example.com](mailto:your.email@example.com)
-🔗 [LinkedIn](https://linkedin.com/in/yourprofile)
+📫 [your.email@example.com](jojuniorjo@gmail.com)
+🔗 [LinkedIn](https://www.linkedin.com/in/juniormenandro/)
 🌐 [Portfolio](https://yourwebsite.com)
 
 ---
