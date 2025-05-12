@@ -1,5 +1,11 @@
 # ServiFlex
 
+🚀 A plataforma que conecta clientes aos melhores profissionais de serviço.
+
+🔗 **Live demo**: [![Deploy](https://img.shields.io/badge/Live%20Site-Vercel-green?style=for-the-badge&logo=vercel)](https://serviflex.vercel.app)
+
+
+
 🚀 **Your smart platform to connect clients and professionals efficiently**
 
 ServiFlex is more than a service marketplace — it's a modern, scalable and delightful solution designed for real-world use. Built with React + Vite + Supabase, it delivers fast, elegant and interactive experiences for both users and service providers.
