@@ -51,7 +51,7 @@ const AppointmentStatusSheet = () => {
     <AnimatePresence mode="wait">
       {!showList ? (
         <motion.button
-          key="botao"
+          key="button"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: 20 }}
@@ -60,11 +60,11 @@ const AppointmentStatusSheet = () => {
           className="w-full flex items-center space-x-1 px-2 py-2 mt-4 text-base md:text-2xl rounded-lg border border-slate-700 md:font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 transition-all"
         >
           <Calendar className="h-5 w-5 md:h-8 md:w-8 text-green-400" />
-          <span>View Status scheduling</span>
+          <span>View Schedule Status</span>
         </motion.button>
       ) : (
         <motion.div
-          key="lista"
+          key="list"
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -20 }}
@@ -76,12 +76,12 @@ const AppointmentStatusSheet = () => {
             className="flex items-center mb-4 text-sm text-slate-400 hover:text-green-400 transition-all"
           >
             <ArrowLeft className="h-4 w-4 mr-2" />
-            Voltar ao menu
+            Back to menu
           </button>
 
           <h2 className="text-lg font-bold mb-4 text-slate-100 flex items-center gap-2">
             <Calendar className="h-5 w-5 text-green-400" />
-            Status scheduling
+            Schedule Status
           </h2>
 
           {loading ? (
@@ -100,7 +100,7 @@ const AppointmentStatusSheet = () => {
                     className="border border-slate-700 p-4 rounded-xl space-y-3 bg-slate-800/50"
                   >
                     <div>
-                      <p className="text-sm mb-1 text-slate-400">Serviço</p>
+                      <p className="text-sm mb-1 text-slate-400">Service</p>
                       <p className="text-lg font-semibold text-slate-100 capitalize">
                         {appointment.category} → {appointment.subcategory}
                       </p>
@@ -123,7 +123,7 @@ const AppointmentStatusSheet = () => {
 
                     {appointment.notes && (
                       <div>
-                        <p className="text-sm mb-1 text-slate-400">Observações:</p>
+                        <p className="text-sm mb-1 text-slate-400">Notes:</p>
                         <p className="text-slate-300">{appointment.notes}</p>
                       </div>
                     )}

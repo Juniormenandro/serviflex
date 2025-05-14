@@ -5,12 +5,54 @@ import { motion } from 'framer-motion';
 import { Car, Home, PawPrint, SprayCan, Wrench, TreePine, Briefcase } from 'lucide-react';
 
 export const categories = [
-  { name: 'Automotivo', icon: Car, color: 'text-red-400', bgColor: 'bg-red-500/10', hoverColor: 'hover:bg-red-500/20', subcategories: ['Mecânica', 'Lava-Jato', 'Elétrica'] },
-  { name: 'Casa', icon: Home, color: 'text-blue-400', bgColor: 'bg-blue-500/10', hoverColor: 'hover:bg-blue-500/20', subcategories: ['Pintura', 'Hidráulica', 'Elétrica'] },
-  { name: 'Jardim', icon: TreePine, color: 'text-green-400', bgColor: 'bg-green-500/10', hoverColor: 'hover:bg-green-500/20', subcategories: ['Paisagismo', 'Poda', 'Limpeza'] },
-  { name: 'Pets', icon: PawPrint, color: 'text-yellow-400', bgColor: 'bg-yellow-500/10', hoverColor: 'hover:bg-yellow-500/20', subcategories: ['Passeador', 'Banho e Tosa', 'Pet Sitter'] },
-  { name: 'Manutenção', icon: Wrench, color: 'text-purple-400', bgColor: 'bg-purple-500/10', hoverColor: 'hover:bg-purple-500/20', subcategories: ['Eletrodomésticos', 'Ar Condicionado', 'Portões'] },
-  { name: 'Outros Serviços', icon: Briefcase, color: 'text-teal-400', bgColor: 'bg-teal-500/10', hoverColor: 'hover:bg-teal-500/20', subcategories: ['Fretes', 'Limpeza Pós-Obra', 'Montador'] },
+  {
+    name: 'Automotive',
+    icon: Car,
+    color: 'text-red-400',
+    bgColor: 'bg-red-500/10',
+    hoverColor: 'hover:bg-red-500/20',
+    subcategories: ['Mechanics', 'Car Wash', 'Electrical'],
+  },
+  {
+    name: 'Home',
+    icon: Home,
+    color: 'text-blue-400',
+    bgColor: 'bg-blue-500/10',
+    hoverColor: 'hover:bg-blue-500/20',
+    subcategories: ['Painting', 'Plumbing', 'Electrical'],
+  },
+  {
+    name: 'Garden',
+    icon: TreePine,
+    color: 'text-green-400',
+    bgColor: 'bg-green-500/10',
+    hoverColor: 'hover:bg-green-500/20',
+    subcategories: ['Landscaping', 'Pruning', 'Cleaning'],
+  },
+  {
+    name: 'Pets',
+    icon: PawPrint,
+    color: 'text-yellow-400',
+    bgColor: 'bg-yellow-500/10',
+    hoverColor: 'hover:bg-yellow-500/20',
+    subcategories: ['Dog Walker', 'Grooming', 'Pet Sitter'],
+  },
+  {
+    name: 'Maintenance',
+    icon: Wrench,
+    color: 'text-purple-400',
+    bgColor: 'bg-purple-500/10',
+    hoverColor: 'hover:bg-purple-500/20',
+    subcategories: ['Appliances', 'Air Conditioning', 'Gates'],
+  },
+  {
+    name: 'Other Services',
+    icon: Briefcase,
+    color: 'text-teal-400',
+    bgColor: 'bg-teal-500/10',
+    hoverColor: 'hover:bg-teal-500/20',
+    subcategories: ['Moving', 'Post-Construction Cleaning', 'Furniture Assembly'],
+  },
 ];
 
 const cardVariants = {
@@ -52,7 +94,7 @@ const ServiceCategories = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          Navegue por <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500">Categorias</span>
+          Browse by <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500">Categories</span>
         </motion.h2>
         <motion.p 
           className="text-center text-slate-400 mb-12 max-w-lg mx-auto"
@@ -60,7 +102,7 @@ const ServiceCategories = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          Encontre rapidamente o tipo de serviço que você precisa explorando nossas principais categorias.
+          Quickly find the type of service you need by exploring our top categories.
         </motion.p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {categories.map((category, index) => (

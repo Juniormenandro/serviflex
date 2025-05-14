@@ -1,24 +1,23 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 
 const TermsPage = () => {
   const sections = [
     {
-      title: 'Termos de Uso',
-      content: 'Estes termos de uso estabelecem as regras para uso da plataforma ServiFlex. Ao utilizar nossos serviços, você concorda com estes termos.'
+      title: 'Terms of Use',
+      content: 'These terms of use establish the rules for using the ServiFlex platform. By using our services, you agree to these terms.'
     },
     {
-      title: 'Uso da Plataforma',
-      content: 'A ServiFlex é uma plataforma de intermediação entre profissionais e clientes. Não somos prestadores diretos dos serviços oferecidos.'
+      title: 'Platform Usage',
+      content: 'ServiFlex is a platform that connects professionals and clients. We are not the direct providers of the services offered.'
     },
     {
-      title: 'Responsabilidades',
-      content: 'A ServiFlex não se responsabiliza diretamente pela prestação dos serviços, mas atua como facilitadora e garante padrões de qualidade.'
+      title: 'Responsibilities',
+      content: 'ServiFlex is not directly responsible for service delivery, but acts as a facilitator and ensures quality standards.'
     },
     {
-      title: 'Pagamentos',
-      content: 'Todos os pagamentos são processados de forma segura através da nossa plataforma, garantindo proteção tanto para clientes quanto profissionais.'
+      title: 'Payments',
+      content: 'All payments are processed securely through our platform, ensuring protection for both clients and professionals.'
     }
   ];
 
@@ -37,7 +36,7 @@ const TermsPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
-          Termos de <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500">Serviço</span>
+          Terms of <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500">Service</span>
         </motion.h1>
 
         <motion.p 
@@ -46,7 +45,7 @@ const TermsPage = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
         >
-          Leia com atenção nossos termos e condições de uso
+          Please read our terms and conditions carefully
         </motion.p>
 
         <div className="space-y-8">
@@ -71,10 +70,10 @@ const TermsPage = () => {
           className="mt-12 bg-gradient-to-r from-green-500/10 to-blue-500/10 p-8 rounded-xl border border-slate-700 text-center"
         >
           <p className="text-slate-300">
-            Última atualização: 9 de Maio, 2025
+            Last updated: May 9, 2025
           </p>
           <p className="text-slate-400 mt-2">
-            Para dúvidas sobre nossos termos, entre em contato com nosso suporte.
+            For questions about our terms, please contact our support team.
           </p>
         </motion.div>
       </div>

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Heart, Shield, Clock, Star } from 'lucide-react';
@@ -7,23 +6,23 @@ const AboutPage = () => {
   const values = [
     {
       icon: Heart,
-      title: "Cuidado e Empatia",
-      description: "Entendemos que cada chamado é um momento de necessidade. Tratamos cada situação com a atenção que merece."
+      title: "Care & Empathy",
+      description: "We understand that every request is a moment of need. We treat each situation with the attention it deserves."
     },
     {
       icon: Shield,
-      title: "Confiança e Segurança",
-      description: "Todos os nossos profissionais são rigorosamente verificados e avaliados para sua tranquilidade."
+      title: "Trust & Safety",
+      description: "All of our professionals are rigorously verified and reviewed for your peace of mind."
     },
     {
       icon: Clock,
-      title: "Agilidade",
-      description: "Quando você precisa, precisa rápido. Nossa plataforma conecta você a profissionais disponíveis em minutos."
+      title: "Speed",
+      description: "When you need help, you need it fast. Our platform connects you with available professionals in minutes."
     },
     {
       icon: Star,
-      title: "Excelência",
-      description: "Mantemos os mais altos padrões de qualidade em todos os serviços prestados."
+      title: "Excellence",
+      description: "We maintain the highest standards of quality in all services provided."
     }
   ];
 
@@ -42,7 +41,7 @@ const AboutPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
-          Sobre a <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500">ServiFlex</span>
+          About <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500">ServiFlex</span>
         </motion.h1>
 
         <motion.p 
@@ -51,7 +50,7 @@ const AboutPage = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
         >
-          A escolha certa quando você mais precisa
+          The right choice when you need it most
         </motion.p>
 
         <motion.div 
@@ -61,15 +60,15 @@ const AboutPage = () => {
           transition={{ delay: 0.4 }}
         >
           <p className="text-lg text-slate-300 mb-6">
-            Na ServiFlex, entendemos que a vida nem sempre segue o planejado. Um cano estourado, um carro que não liga, uma fechadura travada - são momentos que podem causar estresse e preocupação. É aí que entramos em ação.
+            At ServiFlex, we understand that life doesn’t always go as planned. A burst pipe, a car that won’t start, a stuck lock – these moments can bring stress and concern. That’s where we come in.
           </p>
           
           <p className="text-lg text-slate-300 mb-6">
-            Nossa missão é transformar momentos de dificuldade em soluções rápidas e confiáveis. Conectamos você aos melhores profissionais, cuidadosamente selecionados e comprometidos com a excelência, para resolver seus problemas com agilidade e qualidade.
+            Our mission is to turn difficult moments into quick and reliable solutions. We connect you to the best professionals, carefully selected and committed to excellence, to solve your problems with speed and quality.
           </p>
 
           <p className="text-lg text-slate-300">
-            Mais do que uma plataforma de serviços, somos um parceiro presente nos momentos em que você mais precisa de ajuda. Nossa equipe trabalha incansavelmente para garantir que cada experiência seja marcada por profissionalismo, confiança e satisfação.
+            More than a service platform, we are a reliable partner when you need help the most. Our team works tirelessly to ensure every experience is marked by professionalism, trust, and satisfaction.
           </p>
         </motion.div>
 
@@ -95,9 +94,9 @@ const AboutPage = () => {
           transition={{ delay: 0.6 }}
           className="bg-gradient-to-r from-green-500/10 to-blue-500/10 p-8 rounded-xl border border-slate-700"
         >
-          <h2 className="text-2xl font-bold mb-4">Nossa Promessa</h2>
+          <h2 className="text-2xl font-bold mb-4">Our Promise</h2>
           <p className="text-slate-300">
-            Continuaremos inovando e evoluindo para oferecer sempre a melhor experiência em serviços, mantendo nosso compromisso de ser "a escolha certa quando você mais precisa".
+            We will continue to innovate and evolve to deliver the best service experience, upholding our commitment to being "the right choice when you need it most."
           </p>
         </motion.div>
       </div>

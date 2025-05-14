@@ -75,7 +75,7 @@ const Hero = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
               >
-                Como posso ajudar você hoje?
+                How can I help you today?
               </motion.h1>
               <motion.p 
                 className="text-lg md:text-xl text-slate-300 mb-10 max-w-2xl mx-auto"
@@ -83,7 +83,7 @@ const Hero = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
-                Olá! Sou seu assistente virtual e estou aqui para ajudar você a encontrar o profissional ideal para seu serviço. Me conte o que você precisa!
+                Hello! I'm your virtual assistant and I'm here to help you find the right professional for your service. Tell me what you need!
               </motion.p>
               
               <form onSubmit={handleSendMessage} className="flex flex-col sm:flex-row max-w-xl mx-auto gap-4 mb-12">
@@ -100,7 +100,7 @@ const Hero = () => {
                   size="lg" 
                   className="h-14 rounded-full text-lg bg-gradient-to-r from-green-500 to-blue-600 hover:from-green-600 hover:to-blue-700 text-white shadow-lg hover:shadow-green-500/50 transition-all duration-300 group"
                 >
-                  Conversar Agora
+                  Start Chat
                   <Send className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </form>
@@ -111,11 +111,11 @@ const Hero = () => {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.6 }}
               >
-                <span>Atendimento 24/7</span>
+                <span>24/7 Support</span>
                 <span className="text-green-400">&bull;</span>
-                <span>Resposta Instantânea</span>
+                <span>Instant Response</span>
                 <span className="text-blue-400">&bull;</span>
-                <span>Assistência Personalizada</span>
+                <span>Personalized Assistance</span>
               </motion.div>
             </motion.div>
           ) : (
@@ -128,7 +128,7 @@ const Hero = () => {
               className="max-w-2xl mx-auto"
             >
               <div className="flex justify-between items-center mb-6">
-                <h2 className="text-xl font-semibold text-slate-100">Atendimento ServiFlex</h2>
+                <h2 className="text-xl font-semibold text-slate-100">ServiFlex Support</h2>
                 <Button
                   onClick={handleCloseChat}
                   variant="ghost"

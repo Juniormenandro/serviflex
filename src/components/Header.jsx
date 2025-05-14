@@ -52,21 +52,21 @@ const Header = () => {
 
   const menuItems = user
   ? [
-      { label: 'Agendamentos', isComponent: true, component: <AppointmentStatusSheet onClose={() => setOpen(false)} /> },
-      { label: 'For Professionals', path: '/for-professionals', icon: Briefcase },
+      { label: 'Appointments', isComponent: true, component: <AppointmentStatusSheet onClose={() => setOpen(false)} /> },
+      { label: 'For Professionals', path: '/professional-register', icon: Briefcase },
       { label: 'Contact', path: '/contact', icon: Mail },
       { label: 'Blog', path: '/blog', icon: Podcast },
-      { label: 'Imprensa', path: '/press', icon: PanelTop },
-      { label: 'Sobre Nós', path: '/about', icon: Building },
+      { label: 'Press', path: '/press', icon: PanelTop },
+      { label: 'About Us', path: '/about', icon: Building },
       { label: 'Logout', isAction: true, action: handleLogout, icon: LogOut },
     ]
   : [
       { label: 'Login', isAction: true, action: handleLoginGoogle, icon: LogIn },
-      { label: 'For Professionals', path: '/for-professionals', icon: Briefcase },
+      { label: 'For Professionals', path: '/professional-register', icon: Briefcase },
       { label: 'Contact', path: '/contact', icon: Mail },
       { label: 'Blog', path: '/blog', icon: Podcast },
-      { label: 'Imprensa', path: '/press', icon: PanelTop },
-      { label: 'Sobre Nós', path: '/about', icon: Building },
+      { label: 'Press', path: '/press', icon: PanelTop },
+      { label: 'About Us', path: '/about', icon: Building },
     ];
 
 
@@ -107,7 +107,7 @@ const Header = () => {
                     {user
                     ?
                       <><User className="h-5 w-5 md:h-8 md:w-8 text-green-400" />
-                      <span>Olá, {user.user_metadata.full_name}</span></> 
+                      <span>Hello, {user.user_metadata.full_name}</span></> 
                     : 
                       <><Menu className="h-5 w-5 md:h-8 md:w-8 text-green-400" />
                       <span>Menu ServiFlex </span></>

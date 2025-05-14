@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Shield, Lock, Eye, Database } from 'lucide-react';
@@ -7,23 +6,23 @@ const PrivacyPage = () => {
   const privacyTopics = [
     {
       icon: Shield,
-      title: 'Proteção de Dados',
-      content: 'Seus dados pessoais são protegidos com as mais avançadas tecnologias de segurança.'
+      title: 'Data Protection',
+      content: 'Your personal data is protected with the most advanced security technologies.'
     },
     {
       icon: Lock,
-      title: 'Segurança',
-      content: 'Utilizamos criptografia de ponta a ponta para proteger suas informações.'
+      title: 'Security',
+      content: 'We use end-to-end encryption to safeguard your information.'
     },
     {
       icon: Eye,
-      title: 'Transparência',
-      content: 'Você tem total controle sobre seus dados e como eles são utilizados.'
+      title: 'Transparency',
+      content: 'You have full control over your data and how it is used.'
     },
     {
       icon: Database,
-      title: 'Armazenamento',
-      content: 'Seus dados são armazenados em servidores seguros e com backup regular.'
+      title: 'Storage',
+      content: 'Your data is stored on secure servers with regular backups.'
     }
   ];
 
@@ -42,7 +41,7 @@ const PrivacyPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
-          Política de <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500">Privacidade</span>
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500">Privacy</span> Policy
         </motion.h1>
 
         <motion.p 
@@ -51,7 +50,7 @@ const PrivacyPage = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
         >
-          Seu direito à privacidade é nossa prioridade
+          Your right to privacy is our top priority
         </motion.p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
@@ -77,28 +76,28 @@ const PrivacyPage = () => {
           className="space-y-8"
         >
           <div className="bg-slate-800/50 p-8 rounded-xl border border-slate-700">
-            <h2 className="text-2xl font-semibold mb-4">Coleta de Dados</h2>
+            <h2 className="text-2xl font-semibold mb-4">Data Collection</h2>
             <p className="text-slate-300 mb-4">
-              Coletamos apenas os dados necessários para o funcionamento da plataforma e melhoria dos serviços:
+              We collect only the data necessary to operate the platform and improve our services:
             </p>
             <ul className="list-disc list-inside text-slate-300 space-y-2">
-              <li>Informações de cadastro</li>
-              <li>Dados de uso da plataforma</li>
-              <li>Avaliações e feedback</li>
-              <li>Informações de pagamento</li>
+              <li>Registration information</li>
+              <li>Platform usage data</li>
+              <li>Ratings and feedback</li>
+              <li>Payment information</li>
             </ul>
           </div>
 
           <div className="bg-slate-800/50 p-8 rounded-xl border border-slate-700">
-            <h2 className="text-2xl font-semibold mb-4">Seus Direitos</h2>
+            <h2 className="text-2xl font-semibold mb-4">Your Rights</h2>
             <p className="text-slate-300 mb-4">
-              Você tem direito a:
+              You have the right to:
             </p>
             <ul className="list-disc list-inside text-slate-300 space-y-2">
-              <li>Acessar seus dados</li>
-              <li>Solicitar correções</li>
-              <li>Excluir sua conta</li>
-              <li>Exportar suas informações</li>
+              <li>Access your data</li>
+              <li>Request corrections</li>
+              <li>Delete your account</li>
+              <li>Export your information</li>
             </ul>
           </div>
         </motion.div>
@@ -110,10 +109,10 @@ const PrivacyPage = () => {
           className="mt-12 bg-gradient-to-r from-green-500/10 to-blue-500/10 p-8 rounded-xl border border-slate-700 text-center"
         >
           <p className="text-slate-300">
-            Última atualização: 9 de Maio, 2025
+            Last updated: May 9, 2025
           </p>
           <p className="text-slate-400 mt-2">
-            Para questões sobre privacidade, contate nosso DPO: privacidade@serviflex.com
+            For questions about privacy, contact our DPO at: privacidade@serviflex.com
           </p>
         </motion.div>
       </div>

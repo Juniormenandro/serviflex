@@ -55,7 +55,6 @@ function App() {
             
             {/* New Routes */}
             <Route path="/login" element={<div>Login Page</div>} />
-            <Route path="/for-professionals" element={<ProfessionalRegisterPage />} />
           </Routes>
         </AnimatePresence>
       </main>

@@ -22,7 +22,7 @@ const LoginPage = () => {
       >
         Login with Google
       </Button>
-    </div>
+    </div> 
   );
 };
 

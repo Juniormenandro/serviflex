@@ -20,7 +20,7 @@ const ReviewSection = () => {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [newReview, setNewReview] = useState({
-    rating: 5,
+    rating: 5, 
     comment: '',
     image: null
   });

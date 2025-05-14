@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
@@ -6,24 +5,24 @@ import { ChevronDown } from 'lucide-react';
 const HelpFaqPage = () => {
   const faqs = [
     {
-      question: 'Como funciona o processo de contratação?',
-      answer: 'Basta escolher o serviço desejado, selecionar um profissional disponível e agendar o horário que melhor se adequa à sua necessidade. O pagamento é feito de forma segura através da nossa plataforma.'
+      question: 'How does the hiring process work?',
+      answer: 'Just choose the desired service, select an available professional, and schedule the time that best suits your needs. Payment is made securely through our platform.'
     },
     {
-      question: 'Os profissionais são verificados?',
-      answer: 'Sim! Todos os profissionais passam por um rigoroso processo de verificação que inclui checagem de documentos, antecedentes e referências profissionais.'
+      question: 'Are the professionals verified?',
+      answer: 'Yes! All professionals go through a strict verification process, including document checks, background verification, and professional references.'
     },
     {
-      question: 'Como funciona a garantia dos serviços?',
-      answer: 'Oferecemos garantia de satisfação em todos os serviços. Caso haja algum problema, nossa equipe de suporte está pronta para ajudar e resolver a situação.'
+      question: 'How does the service warranty work?',
+      answer: 'We offer satisfaction guarantee on all services. If any issue arises, our support team is ready to assist and resolve the situation.'
     },
     {
-      question: 'Qual é o prazo de atendimento?',
-      answer: 'O tempo de atendimento varia de acordo com a disponibilidade dos profissionais e a urgência do serviço. Em casos emergenciais, conseguimos atendimento em até 2 horas.'
+      question: 'What is the service time frame?',
+      answer: 'The response time depends on the availability of professionals and service urgency. For emergencies, we can attend within 2 hours.'
     },
     {
-      question: 'Como faço para me tornar um profissional?',
-      answer: 'Para se cadastrar como profissional, acesse a seção "Para Profissionais" e siga o processo de cadastro. Será necessário apresentar documentação e passar por uma entrevista.'
+      question: 'How can I become a professional?',
+      answer: 'To register as a professional, go to the "For Professionals" section and follow the registration process. You’ll need to provide documentation and go through an interview.'
     }
   ];
 
@@ -42,7 +41,7 @@ const HelpFaqPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
-          Ajuda e <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500">FAQ</span>
+          Help and <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500">FAQ</span>
         </motion.h1>
 
         <motion.p 
@@ -51,7 +50,7 @@ const HelpFaqPage = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
         >
-          Encontre respostas para as dúvidas mais frequentes
+          Find answers to the most frequently asked questions
         </motion.p>
 
         <div className="space-y-4">
@@ -80,12 +79,12 @@ const HelpFaqPage = () => {
           transition={{ delay: 0.7 }}
           className="mt-12 bg-gradient-to-r from-green-500/10 to-blue-500/10 p-8 rounded-xl border border-slate-700 text-center"
         >
-          <h2 className="text-2xl font-semibold mb-4">Ainda tem dúvidas?</h2>
+          <h2 className="text-2xl font-semibold mb-4">Still have questions?</h2>
           <p className="text-slate-300 mb-6">
-            Nossa equipe de suporte está sempre pronta para ajudar você.
+            Our support team is always ready to help you.
           </p>
           <button className="px-8 py-4 bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-green-500/50 transition-all duration-300">
-            Falar com Suporte
+            Talk to Support
           </button>
         </motion.div>
       </div>

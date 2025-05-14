@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Search, Calendar, Star, CreditCard } from 'lucide-react';
@@ -7,42 +6,42 @@ const HowItWorksPage = () => {
   const steps = [
     {
       icon: Search,
-      title: 'Encontre Clientes',
-      description: 'Receba solicitações de serviço de clientes em sua região que precisam de suas habilidades profissionais.'
+      title: 'Find Clients',
+      description: 'Receive service requests from customers in your area who need your professional skills.'
     },
     {
       icon: Calendar,
-      title: 'Gerencie sua Agenda',
-      description: 'Organize seus horários com flexibilidade. Você decide quando e quantos serviços deseja realizar.'
+      title: 'Manage Your Schedule',
+      description: 'Organize your time with flexibility. You decide when and how many jobs you want to take.'
     },
     {
       icon: Star,
-      title: 'Construa sua Reputação',
-      description: 'Receba avaliações dos clientes e construa uma reputação sólida na plataforma.'
+      title: 'Build Your Reputation',
+      description: 'Receive reviews from clients and build a strong reputation on the platform.'
     },
     {
       icon: CreditCard,
-      title: 'Receba seus Pagamentos',
-      description: 'Pagamentos seguros e garantidos, transferidos diretamente para sua conta após a conclusão do serviço.'
+      title: 'Get Paid',
+      description: 'Secure and guaranteed payments, transferred directly to your account after completing the service.'
     }
   ];
 
   const features = [
     {
-      title: 'Suporte Dedicado',
-      description: 'Nossa equipe está sempre disponível para ajudar você em qualquer situação.'
+      title: 'Dedicated Support',
+      description: 'Our team is always available to help you in any situation.'
     },
     {
-      title: 'Ferramentas Profissionais',
-      description: 'Acesso a ferramentas de gestão para organizar seus serviços e finanças.'
+      title: 'Professional Tools',
+      description: 'Access to management tools to organize your jobs and finances.'
     },
     {
-      title: 'Seguro Profissional',
-      description: 'Proteção para você e seus clientes durante a prestação dos serviços.'
+      title: 'Professional Insurance',
+      description: 'Protection for you and your clients during service delivery.'
     },
     {
-      title: 'Capacitação Contínua',
-      description: 'Acesso a treinamentos e recursos para aprimorar suas habilidades.'
+      title: 'Continuous Training',
+      description: 'Access to training and resources to improve your skills.'
     }
   ];
 
@@ -61,7 +60,7 @@ const HowItWorksPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
-          Como <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500">Funciona</span>
+          How It <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500">Works</span>
         </motion.h1>
 
         <motion.p 
@@ -70,7 +69,7 @@ const HowItWorksPage = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
         >
-          Entenda como é fácil trabalhar com a ServiFlex
+          See how easy it is to work with ServiFlex
         </motion.p>
 
         <div className="space-y-8 mb-16">
@@ -99,7 +98,7 @@ const HowItWorksPage = () => {
           transition={{ delay: 0.8 }}
           className="bg-gradient-to-r from-green-500/10 to-blue-500/10 p-8 rounded-xl border border-slate-700"
         >
-          <h2 className="text-2xl font-semibold mb-8 text-center">Recursos Exclusivos</h2>
+          <h2 className="text-2xl font-semibold mb-8 text-center">Exclusive Features</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {features.map((feature, index) => (
               <motion.div
@@ -123,7 +122,7 @@ const HowItWorksPage = () => {
           className="mt-12 text-center"
         >
           <button className="px-8 py-4 bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-green-500/50 transition-all duration-300">
-            Começar Agora
+            Get Started Now
           </button>
         </motion.div>
       </div>

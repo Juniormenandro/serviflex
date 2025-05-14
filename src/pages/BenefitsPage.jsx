@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Wallet, Clock, Shield, Award, Target, Users, Zap, TrendingUp } from 'lucide-react';
@@ -7,46 +6,46 @@ const BenefitsPage = () => {
   const mainBenefits = [
     {
       icon: Wallet,
-      title: 'Ganhos Atraentes',
-      description: 'Defina seus preços e receba pagamentos de forma segura e pontual.'
+      title: 'Attractive Earnings',
+      description: 'Set your own prices and receive secure, on-time payments.'
     },
     {
       icon: Clock,
-      title: 'Flexibilidade Total',
-      description: 'Trabalhe nos horários que melhor se adequam à sua rotina.'
+      title: 'Total Flexibility',
+      description: 'Work on the schedule that best fits your routine.'
     },
     {
       icon: Shield,
-      title: 'Segurança Garantida',
-      description: 'Proteção completa para você e seus serviços.'
+      title: 'Guaranteed Security',
+      description: 'Full protection for you and your services.'
     },
     {
       icon: Award,
-      title: 'Reconhecimento',
-      description: 'Sistema de avaliações que valoriza os melhores profissionais.'
+      title: 'Recognition',
+      description: 'Rating system that highlights top-performing professionals.'
     }
   ];
 
   const additionalBenefits = [
     {
       icon: Target,
-      title: 'Clientes Qualificados',
-      description: 'Acesso a uma base de clientes verificados e prontos para contratar.'
+      title: 'Qualified Clients',
+      description: 'Access a base of verified clients ready to hire.'
     },
     {
       icon: Users,
-      title: 'Comunidade Ativa',
-      description: 'Faça parte de uma rede de profissionais e troque experiências.'
+      title: 'Active Community',
+      description: 'Be part of a network of professionals and share experiences.'
     },
     {
       icon: Zap,
-      title: 'Suporte Prioritário',
-      description: 'Atendimento exclusivo para resolver suas questões rapidamente.'
+      title: 'Priority Support',
+      description: 'Exclusive support to quickly resolve your issues.'
     },
     {
       icon: TrendingUp,
-      title: 'Crescimento Profissional',
-      description: 'Acesso a treinamentos e oportunidades de desenvolvimento.'
+      title: 'Professional Growth',
+      description: 'Access to training and development opportunities.'
     }
   ];
 
@@ -65,7 +64,7 @@ const BenefitsPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
-          Benefícios para <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500">Profissionais</span>
+          Benefits for <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500">Professionals</span>
         </motion.h1>
 
         <motion.p 
@@ -74,7 +73,7 @@ const BenefitsPage = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
         >
-          Descubra as vantagens de fazer parte da nossa plataforma
+          Discover the advantages of being part of our platform
         </motion.p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
@@ -99,7 +98,7 @@ const BenefitsPage = () => {
           transition={{ delay: 0.8 }}
           className="bg-gradient-to-r from-green-500/10 to-blue-500/10 p-8 rounded-xl border border-slate-700 mb-16"
         >
-          <h2 className="text-2xl font-semibold mb-8 text-center">Mais Benefícios</h2>
+          <h2 className="text-2xl font-semibold mb-8 text-center">More Benefits</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {additionalBenefits.map((benefit, index) => (
               <motion.div
@@ -125,12 +124,12 @@ const BenefitsPage = () => {
           transition={{ delay: 1.3 }}
           className="text-center space-y-6"
         >
-          <h2 className="text-2xl font-semibold">Pronto para começar?</h2>
+          <h2 className="text-2xl font-semibold">Ready to get started?</h2>
           <p className="text-slate-300">
-            Junte-se a milhares de profissionais que já estão crescendo com a ServiFlex
+            Join thousands of professionals already growing with ServiFlex
           </p>
           <button className="px-8 py-4 bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-green-500/50 transition-all duration-300">
-            Cadastre-se como Profissional
+            Register as a Professional
           </button>
         </motion.div>
       </div>

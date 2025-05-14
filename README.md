@@ -1,6 +1,6 @@
 # ServiFlex
 
-🚀 A plataforma que conecta clientes aos melhores profissionais de serviço.
+🚀 The platform that connects customers to the best service professionals.
 
 🔗 **Live demo**: [![Deploy](https://img.shields.io/badge/Live%20Site-Vercel-green?style=for-the-badge&logo=vercel)](https://serviflex.vercel.app)
 

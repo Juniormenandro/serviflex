@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 
@@ -18,7 +17,7 @@ const CareersPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
-          Carreiras na <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500">ServiFlex</span>
+          Careers at <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500">ServiFlex</span>
         </motion.h1>
 
         <motion.p 
@@ -27,7 +26,7 @@ const CareersPage = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
         >
-          Junte-se a nós na missão de transformar a prestação de serviços no Brasil
+          Join us on our mission to transform service delivery in Brazil
         </motion.p>
 
         <div className="space-y-8">
@@ -37,12 +36,12 @@ const CareersPage = () => {
             transition={{ delay: 0.4 }}
             className="bg-slate-800/50 p-8 rounded-xl border border-slate-700"
           >
-            <h2 className="text-2xl font-semibold mb-4">Por que trabalhar conosco?</h2>
+            <h2 className="text-2xl font-semibold mb-4">Why work with us?</h2>
             <ul className="space-y-4 text-slate-300">
-              <li>• Ambiente dinâmico e inovador</li>
-              <li>• Oportunidades de crescimento</li>
-              <li>• Benefícios competitivos</li>
-              <li>• Cultura colaborativa</li>
+              <li>• Dynamic and innovative environment</li>
+              <li>• Growth opportunities</li>
+              <li>• Competitive benefits</li>
+              <li>• Collaborative culture</li>
             </ul>
           </motion.div>
 
@@ -52,22 +51,22 @@ const CareersPage = () => {
             transition={{ delay: 0.5 }}
             className="bg-gradient-to-r from-green-500/10 to-blue-500/10 p-8 rounded-xl border border-slate-700"
           >
-            <h2 className="text-2xl font-semibold mb-4">Vagas em Aberto</h2>
+            <h2 className="text-2xl font-semibold mb-4">Open Positions</h2>
             <p className="text-slate-300 mb-4">
-              Estamos sempre em busca de talentos para expandir nossa equipe.
+              We’re always looking for great talent to join our team.
             </p>
             <div className="space-y-4">
               <div className="p-4 bg-slate-800/50 rounded-lg">
-                <h3 className="font-semibold">Desenvolvedor Full Stack</h3>
-                <p className="text-slate-400">São Paulo - Remoto</p>
+                <h3 className="font-semibold">Full Stack Developer</h3>
+                <p className="text-slate-400">São Paulo - Remote</p>
               </div>
               <div className="p-4 bg-slate-800/50 rounded-lg">
                 <h3 className="font-semibold">Product Designer</h3>
-                <p className="text-slate-400">São Paulo - Remoto</p>
+                <p className="text-slate-400">São Paulo - Remote</p>
               </div>
               <div className="p-4 bg-slate-800/50 rounded-lg">
                 <h3 className="font-semibold">Customer Success</h3>
-                <p className="text-slate-400">São Paulo - Híbrido</p>
+                <p className="text-slate-400">São Paulo - Hybrid</p>
               </div>
             </div>
           </motion.div>
@@ -79,7 +78,7 @@ const CareersPage = () => {
             className="text-center"
           >
             <button className="px-8 py-4 bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-green-500/50 transition-all duration-300">
-              Ver Todas as Vagas
+              View All Openings
             </button>
           </motion.div>
         </div>

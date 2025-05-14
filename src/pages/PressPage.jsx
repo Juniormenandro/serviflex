@@ -1,23 +1,22 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 
 const PressPage = () => {
   const pressReleases = [
     {
-      date: '15 de Maio, 2025',
-      title: 'ServiFlex expande operações para mais 10 cidades',
-      description: 'A plataforma líder em serviços domésticos anuncia expansão significativa de sua área de atuação.'
+      date: 'May 15, 2025',
+      title: 'ServiFlex expands operations to 10 more cities',
+      description: 'The leading home services platform announces a significant expansion of its coverage area.'
     },
     {
-      date: '3 de Abril, 2025',
-      title: 'Novo recorde: 100 mil profissionais cadastrados',
-      description: 'ServiFlex alcança marca histórica de profissionais verificados em sua plataforma.'
+      date: 'April 3, 2025',
+      title: 'New record: 100,000 registered professionals',
+      description: 'ServiFlex reaches a historic milestone with verified professionals on its platform.'
     },
     {
-      date: '12 de Março, 2025',
-      title: 'Lançamento do programa de capacitação profissional',
-      description: 'Iniciativa visa aprimorar ainda mais a qualidade dos serviços oferecidos na plataforma.'
+      date: 'March 12, 2025',
+      title: 'Launch of professional training program',
+      description: 'The initiative aims to further improve the quality of services offered on the platform.'
     }
   ];
 
@@ -36,7 +35,7 @@ const PressPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
-          Sala de <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500">Imprensa</span>
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500">Press</span> Room
         </motion.h1>
 
         <motion.p 
@@ -45,7 +44,7 @@ const PressPage = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
         >
-          Últimas notícias e atualizações da ServiFlex
+          Latest news and updates from ServiFlex
         </motion.p>
 
         <div className="space-y-8">
@@ -70,13 +69,13 @@ const PressPage = () => {
           transition={{ delay: 0.7 }}
           className="mt-12 bg-gradient-to-r from-green-500/10 to-blue-500/10 p-8 rounded-xl border border-slate-700"
         >
-          <h2 className="text-2xl font-semibold mb-4">Contato para Imprensa</h2>
+          <h2 className="text-2xl font-semibold mb-4">Press Contact</h2>
           <p className="text-slate-300 mb-4">
-            Para solicitações de mídia e informações adicionais, entre em contato com nossa assessoria de imprensa.
+            For media inquiries and additional information, please contact our press office.
           </p>
           <div className="text-slate-300">
-            <p>Email: imprensa@serviflex.com</p>
-            <p>Telefone: (11) 9999-9999</p>
+            <p>Email: press@serviflex.com</p>
+            <p>Phone: +55 11 9999-9999</p>
           </div>
         </motion.div>
       </div>

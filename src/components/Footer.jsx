@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Facebook, Instagram, Twitter, Linkedin, Briefcase } from 'lucide-react';
@@ -14,29 +13,29 @@ const Footer = () => {
 
   const footerSections = [
     {
-      title: 'Empresa',
+      title: 'Company',
       links: [
-        { name: 'Sobre Nós', to: '/about' },
-        { name: 'Carreiras', to: '/careers' },
-        { name: 'Imprensa', to: '/press' },
+        { name: 'About Us', to: '/about' },
+        { name: 'Careers', to: '/careers' },
+        { name: 'Press', to: '/press' },
         { name: 'Blog', to: '/blog' },
       ],
     },
     {
-      title: 'Suporte',
+      title: 'Support',
       links: [
-        { name: 'Ajuda / FAQ', to: '/help' },
-        { name: 'Contato', to: '/contact' },
-        { name: 'Termos de Serviço', to: '/terms' },
-        { name: 'Política de Privacidade', to: '/privacy' },
+        { name: 'Help / FAQ', to: '/help' },
+        { name: 'Contact', to: '/contact' },
+        { name: 'Terms of Service', to: '/terms' },
+        { name: 'Privacy Policy', to: '/privacy' },
       ],
     },
     {
-      title: 'Para Profissionais',
+      title: 'For Professionals',
       links: [
-        { name: 'Cadastre-se', to: '/professional-register' },
-        { name: 'Como Funciona', to: '/how-it-works' },
-        { name: 'Benefícios', to: '/benefits' },
+        { name: 'Register', to: '/professional-register' },
+        { name: 'How It Works', to: '/how-it-works' },
+        { name: 'Benefits', to: '/benefits' },
       ],
     },
   ];
@@ -55,7 +54,7 @@ const Footer = () => {
               <Briefcase className="h-8 w-8 text-green-400" />
               <span>ServiFlex</span>
             </Link>
-            <p className="text-sm">Conectando você aos melhores profissionais de serviço da sua região.</p>
+            <p className="text-sm">Connecting you with the best service professionals in your region.</p>
             <div className="flex space-x-4 pt-2">
               {socialLinks.map((social, index) => (
                 <motion.a
@@ -92,8 +91,8 @@ const Footer = () => {
         </div>
         
         <div className="mt-12 pt-8 border-t border-slate-700/50 text-center text-sm">
-        <p className="mt-1">Criado com <span className="text-red-500">&hearts;</span> Serviflex </p>
-          <p>&copy; {new Date().getFullYear()} ServiFlex. Todos os direitos reservados.</p>
+          <p className="mt-1">Made with <span className="text-red-500">&hearts;</span> by ServiFlex</p>
+          <p>&copy; {new Date().getFullYear()} ServiFlex. All rights reserved.</p>
         </div>
       </div>
     </motion.footer>

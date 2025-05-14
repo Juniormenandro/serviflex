@@ -57,7 +57,7 @@ const AppointmentSheet = () => {
           whileHover={{ scale: 1.05 }}
           className="w-full py-2 px-4 sm:py-4 sm:px-6 rounded-lg sm:rounded-xl text-sm sm:text-base font-medium sm:font-semibold bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 text-white transition-all duration-300 shadow-md hover:shadow-green-500/50"
           >
-          Solicitar orçamento para {subcategoryName}
+          Request a quote for {subcategoryName}
         </motion.button>
       </SheetTrigger>
       <SheetContent className="bg-slate-900/95 backdrop-blur-lg border-slate-800">
@@ -81,43 +81,43 @@ const AppointmentSheet = () => {
         >
           {/* Nome */}
           <div>
-            <label className="block text-sm mb-1">Seu Nome</label>
-            <Input {...register('name', { required: 'Nome é obrigatório' })} placeholder="Digite seu nome" />
+            <label className="block text-sm mb-1">Your name</label>
+            <Input {...register('name', { required: 'Name is required' })} placeholder="Enter your name" />
             {errors.name && <p className="text-red-400 text-sm">{errors.name.message}</p>}
           </div>
 
           {/* Telefone */}
           <div>
-            <label className="block text-sm mb-1">Telefone</label>
-            <Input {...register('phone', { required: 'Telefone é obrigatório' })} placeholder="(00) 00000-0000" />
+            <label className="block text-sm mb-1">Telephone</label>
+            <Input {...register('phone', { required: 'Telephone is mandatory' })} placeholder="(00) 00000-0000" />
             {errors.phone && <p className="text-red-400 text-sm">{errors.phone.message}</p>}
           </div>
 
           {/* Data */}
           <div>
-            <label className="block text-sm mb-1">Data Preferencial</label>
-            <Input type="date" {...register('date', { required: 'Data é obrigatória' })} />
+            <label className="block text-sm mb-1">Preferred Date</label>
+            <Input type="date" {...register('date', { required: 'Date is mandatory' })} />
             {errors.date && <p className="text-red-400 text-sm">{errors.date.message}</p>}
           </div>
 
           {/* Horário */}
           <div>
-            <label className="block text-sm mb-1">Horário Preferencial</label>
-            <Input type="time" {...register('time', { required: 'Horário é obrigatório' })} />
+            <label className="block text-sm mb-1">Preferred Schedule</label>
+            <Input type="time" {...register('time', { required: 'Schedule is mandatory' })} />
             {errors.time && <p className="text-red-400 text-sm">{errors.time.message}</p>}
           </div>
 
           {/* Observações */}
           <div>
-            <label className="block text-sm mb-1">Observações</label>
-            <Input {...register('notes')} placeholder="Alguma observação?" />
+            <label className="block text-sm mb-1">Observations</label>
+            <Input {...register('notes')} placeholder="Any observations?" />
           </div>
 
           <motion.button
             whileHover={{ scale: 1.05 }}
             className="w-full py-2 px-4 sm:py-4 sm:px-6 rounded-lg sm:rounded-xl text-sm sm:text-base font-medium sm:font-semibold bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 text-white transition-all duration-300 shadow-md hover:shadow-green-500/50"
             >
-            Confirmar Agendamento
+            Confirm Appointment
           </motion.button>
         </motion.form>
       </SheetContent>
