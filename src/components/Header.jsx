@@ -17,7 +17,8 @@ import {
   Building,
   LayoutDashboard,
   Grid,
-  Star
+  Star,
+  Settings
 } from 'lucide-react';
 
 import {
@@ -69,6 +70,7 @@ const Header = () => {
   ? [
       { label: 'Appointments', isComponent: true, component: <AppointmentStatusSheet onClose={() => setOpen(false)} /> },
       { label: 'Admin Dashboard', path: '/admin', icon: LayoutDashboard },
+      { label: 'Categories Dashboard', path: '/admin/categoria', icon: Settings },
       { label: 'Categories', path: '/#categories-section', icon: Grid },
       { label: 'Reviews', path: '/#Reviews', icon: Star },
       { label: 'Contact', path: '/#contact', icon: Mail },
@@ -81,6 +83,8 @@ const Header = () => {
   : [
       { label: 'Login', isAction: true, action: handleLoginGoogle, icon: LogIn },
       { label: 'Categories', path: '/#categories-section', icon: Grid },
+      { label: 'Reviews', path: '/#Reviews', icon: Star },
+      { label: 'Contact', path: '/#contact', icon: Mail },      
       { label: 'For Professionals', path: '/professional-register', icon: Briefcase },
       { label: 'Contact', path: '/contact', icon: Mail },
       { label: 'Blog', path: '/blog', icon: Podcast },

@@ -1,59 +1,9 @@
-
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { supabase } from '@/lib/supabaseClient';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Car, Home, PawPrint, SprayCan, Wrench, TreePine, Briefcase } from 'lucide-react';
+import { iconOptions } from '@/lib/iconOptions';
 
-export const categories = [
-  {
-    name: 'Automotive',
-    icon: Car,
-    color: 'text-red-400',
-    bgColor: 'bg-red-500/10',
-    hoverColor: 'hover:bg-red-500/20',
-    subcategories: ['Mechanics', 'Car Wash', 'Electrical'],
-  },
-  {
-    name: 'Home',
-    icon: Home,
-    color: 'text-blue-400',
-    bgColor: 'bg-blue-500/10',
-    hoverColor: 'hover:bg-blue-500/20',
-    subcategories: ['Painting', 'Plumbing', 'Electrical'],
-  },
-  {
-    name: 'Garden',
-    icon: TreePine,
-    color: 'text-green-400',
-    bgColor: 'bg-green-500/10',
-    hoverColor: 'hover:bg-green-500/20',
-    subcategories: ['Landscaping', 'Pruning', 'Cleaning'],
-  },
-  {
-    name: 'Pets',
-    icon: PawPrint,
-    color: 'text-yellow-400',
-    bgColor: 'bg-yellow-500/10',
-    hoverColor: 'hover:bg-yellow-500/20',
-    subcategories: ['Dog Walker', 'Grooming', 'Pet Sitter'],
-  },
-  {
-    name: 'Maintenance',
-    icon: Wrench,
-    color: 'text-purple-400',
-    bgColor: 'bg-purple-500/10',
-    hoverColor: 'hover:bg-purple-500/20',
-    subcategories: ['Appliances', 'Air Conditioning', 'Gates'],
-  },
-  {
-    name: 'Other Services',
-    icon: Briefcase,
-    color: 'text-teal-400',
-    bgColor: 'bg-teal-500/10',
-    hoverColor: 'hover:bg-teal-500/20',
-    subcategories: ['Moving', 'Post-Construction Cleaning', 'Furniture Assembly'],
-  },
-];
 
 const cardVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -75,6 +25,8 @@ const cardVariants = {
 
 const ServiceCategories = () => {
   const navigate = useNavigate();
+  const [categories, setCategories] = useState([]);
+  const [subcategories, setSubcategories] = useState([]);
 
   const handleCategoryClick = (categoryName) => {
     navigate(`/category/${categoryName.toLowerCase()}`);
@@ -84,6 +36,16 @@ const ServiceCategories = () => {
     e.stopPropagation();
     navigate(`/category/${categoryName.toLowerCase()}/${subcategoryName.toLowerCase()}`);
   };
+
+  useEffect(() => {
+  const fetchData = async () => {
+    const { data: cats } = await supabase.from('categories').select('*');
+    const { data: subs } = await supabase.from('subcategories').select('*');
+    setCategories(cats || []);
+    setSubcategories(subs || []);
+  };
+  fetchData();
+}, []);
 
   return (
     <section className="py-16 md:py-24 bg-slate-800/50">
@@ -105,32 +67,38 @@ const ServiceCategories = () => {
           Quickly find the type of service you need by exploring our top categories.
         </motion.p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {categories.map((category, index) => (
-            <motion.div
-              key={category.name}
-              className={`rounded-xl p-8 flex flex-col items-center text-center cursor-pointer transition-all duration-300 ${category.bgColor} ${category.hoverColor} border border-slate-700 shadow-lg hover:shadow-2xl`}
-              variants={cardVariants}
-              initial="hidden"
-              animate="visible"
-              whileHover="hover"
-              custom={index}
-              onClick={() => handleCategoryClick(category.name)}
-            >
-              <category.icon className={`h-16 w-16 mb-6 ${category.color}`} strokeWidth={1.5} />
-              <h3 className="text-2xl font-semibold mb-3 text-slate-100">{category.name}</h3>
-              <ul className="space-y-1 text-sm text-slate-400">
-                {category.subcategories.map(sub => (
-                  <li 
-                    key={sub} 
-                    className="hover:text-green-400 transition-colors"
-                    onClick={(e) => handleSubcategoryClick(e, category.name, sub)}
-                  >
-                    {sub}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
+          {categories.map((category, index) => {
+            const Icon = iconOptions.find(i => i.value === category.icon)?.icon;
+
+            return (
+              <motion.div
+                key={category.id}
+                className={`rounded-xl p-8 flex flex-col items-center text-center cursor-pointer transition-all duration-300 ${category.bgColor} ${category.hoverColor} border border-slate-700 shadow-lg hover:shadow-2xl`}
+                variants={cardVariants}
+                initial="hidden"
+                animate="visible"
+                whileHover="hover"
+                custom={index}
+                onClick={() => handleCategoryClick(category.name)}
+              >
+                {Icon && <Icon className={`h-16 w-16 mb-6 ${category.color}`} strokeWidth={1.5} />}
+                <h3 className="text-2xl font-semibold mb-3 text-slate-100">{category.name}</h3>
+                <ul className="space-y-1 text-sm text-slate-400">
+                  {subcategories
+                    .filter(sub => sub.category_id === category.id)
+                    .map(sub => (
+                      <li
+                        key={sub.id}
+                        className="hover:text-green-400 transition-colors"
+                        onClick={(e) => handleSubcategoryClick(e, category.name, sub.name)}
+                      >
+                        {sub.name}
+                      </li>
+                  ))}
+                </ul>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
