@@ -14,7 +14,8 @@ import {
   Mail,
   Podcast,
   PanelTop,
-  Building
+  Building,
+  LayoutDashboard
 } from 'lucide-react';
 
 import {
@@ -53,6 +54,7 @@ const Header = () => {
   const menuItems = user
   ? [
       { label: 'Appointments', isComponent: true, component: <AppointmentStatusSheet onClose={() => setOpen(false)} /> },
+      { label: 'Admin Dashboard', path: '/admin', icon: LayoutDashboard }, 
       { label: 'For Professionals', path: '/professional-register', icon: Briefcase },
       { label: 'Contact', path: '/contact', icon: Mail },
       { label: 'Blog', path: '/blog', icon: Podcast },

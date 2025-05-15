@@ -21,7 +21,8 @@ import HowItWorksPage from '@/pages/HowItWorksPage';
 import BenefitsPage from '@/pages/BenefitsPage';
 import { AnimatePresence } from 'framer-motion';
 import ScrollToTop from './components/ui/ScrollToTop';
-
+import AdminProtectedRoute from './components/ui/AdminProtectedRoute';
+import AdminDashboardPage from './pages/AdminDashboard';
 
 function App() {
   return (
@@ -55,6 +56,8 @@ function App() {
             
             {/* New Routes */}
             <Route path="/login" element={<div>Login Page</div>} />
+            <Route path="/admin" element={<AdminProtectedRoute><AdminDashboardPage /></AdminProtectedRoute>} />
+
           </Routes>
         </AnimatePresence>
       </main>
