@@ -50,8 +50,8 @@ const AdminServiceCategoriesPage = () => {
 
   const handleCreateCategory = async () => {
     const color = `text-${selectedColor}-400`;
-    const bgColor = `bg-${selectedColor}-500/10`;
-    const hoverColor = `hover:bg-${selectedColor}-500/20`;
+    const bgColor = selectedColor;
+    const hoverColor = selectedColor;
 
     const { data, error } = await supabase.from('categories').insert({
       name,

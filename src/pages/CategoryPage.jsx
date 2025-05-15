@@ -1,15 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { categories } from '@/components/ServiceCategories';
+import { fetchFormattedCategories } from '@/lib/categoriesData';
+import { iconMap } from '@/lib/categoriesData';
 
 const CategoryPage = () => {
   const { categoryName } = useParams();
   const navigate = useNavigate();
-  
+  const [categories, setCategories] = useState([]);
+
   const category = categories.find(
     cat => cat.name.toLowerCase() === categoryName.toLowerCase()
   );
+
+  useEffect(() => {
+    const loadCategories = async () => {
+      const data = await fetchFormattedCategories();
+      setCategories(data);
+    };
+    
+    loadCategories();
+  }, []);
 
   if (!category) {
     return (
@@ -19,7 +30,7 @@ const CategoryPage = () => {
     );
   }
 
-  const CategoryIcon = category.icon;
+  const CategoryIcon = iconMap[category.icon] || iconMap['Briefcase'];
 
   return (
     <motion.div
@@ -45,17 +56,18 @@ const CategoryPage = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {category.subcategories.map((subcategory, index) => (
             <motion.div
-              key={subcategory}
+              key={subcategory.id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
-              onClick={() => navigate(`/category/${categoryName}/${subcategory.toLowerCase()}`)}
+              onClick={() => navigate(`/category/${categoryName}/${subcategory.name.toLowerCase()}`)}
               className={`${category.bgColor} ${category.hoverColor} p-6 rounded-xl border border-slate-700 cursor-pointer transition-all duration-300 hover:scale-105`}
             >
-              <h3 className="text-xl font-semibold mb-2 text-slate-100">{subcategory}</h3>
+              <h3 className="text-xl font-semibold mb-2 text-slate-100">{subcategory.name}</h3>
               <p className="text-sm text-slate-400">
-                Skilled professionals in {subcategory.toLowerCase()}
+                Skilled professionals in {subcategory.name.toLowerCase()}
               </p>
+
             </motion.div>
           ))}
         </div>

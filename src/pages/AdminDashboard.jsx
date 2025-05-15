@@ -63,7 +63,6 @@ const AdminDashboardPage = () => {
     = usePaginatedData({ data: professionals, itemsPerPage: 4 });
 
   if (!user) return null;
-  if (user.email !== 'jojuniorjo@gmail.com') return <p className="text-center py-20 text-red-400">Restricted access</p>;
 
   return (
     <motion.div

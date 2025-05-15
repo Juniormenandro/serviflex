@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { supabase } from '@/lib/supabaseClient';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { iconOptions } from '@/lib/iconOptions';
+import { fetchFormattedCategories } from '@/lib/categoriesData';
 
 
 const cardVariants = {
@@ -26,7 +26,6 @@ const cardVariants = {
 const ServiceCategories = () => {
   const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
-  const [subcategories, setSubcategories] = useState([]);
 
   const handleCategoryClick = (categoryName) => {
     navigate(`/category/${categoryName.toLowerCase()}`);
@@ -36,16 +35,16 @@ const ServiceCategories = () => {
     e.stopPropagation();
     navigate(`/category/${categoryName.toLowerCase()}/${subcategoryName.toLowerCase()}`);
   };
-
   useEffect(() => {
-  const fetchData = async () => {
-    const { data: cats } = await supabase.from('categories').select('*');
-    const { data: subs } = await supabase.from('subcategories').select('*');
-    setCategories(cats || []);
-    setSubcategories(subs || []);
-  };
-  fetchData();
-}, []);
+    const loadCategories = async () => {
+      const data = await fetchFormattedCategories();
+      console.log('Categorias formatadas:', data);
+      setCategories(data);
+    };
+    loadCategories();
+  }, []);
+
+
 
   return (
     <section className="py-16 md:py-24 bg-slate-800/50">
@@ -84,16 +83,14 @@ const ServiceCategories = () => {
                 {Icon && <Icon className={`h-16 w-16 mb-6 ${category.color}`} strokeWidth={1.5} />}
                 <h3 className="text-2xl font-semibold mb-3 text-slate-100">{category.name}</h3>
                 <ul className="space-y-1 text-sm text-slate-400">
-                  {subcategories
-                    .filter(sub => sub.category_id === category.id)
-                    .map(sub => (
-                      <li
-                        key={sub.id}
-                        className="hover:text-green-400 transition-colors"
-                        onClick={(e) => handleSubcategoryClick(e, category.name, sub.name)}
-                      >
-                        {sub.name}
-                      </li>
+                  {category.subcategories.map(sub => (
+                    <li
+                      key={sub.id}
+                      className="hover:text-green-400 transition-colors"
+                      onClick={(e) => handleSubcategoryClick(e, category.name, sub.name)}
+                    >
+                      {sub.name}
+                    </li>
                   ))}
                 </ul>
               </motion.div>

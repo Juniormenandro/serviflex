@@ -1,17 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { fetchFormattedCategories } from '@/lib/categoriesData';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { categories } from '@/components/ServiceCategories';
 import AppointmentSheet from '@/components/AppointmentSheet';
 
 import { ArrowLeft } from 'lucide-react';
 
 const SubcategoryPage = () => {
+  const [categories, setCategories] = useState([]);
   const { categoryName, subcategoryName } = useParams();
   
   const category = categories.find(
     cat => cat.name.toLowerCase() === categoryName.toLowerCase()
   );
+
+  useEffect(() => {
+      const loadCategories = async () => {
+        const data = await fetchFormattedCategories();
+        setCategories(data);
+      };
+      loadCategories();
+    }, []);
 
   if (!category) {
     return (
@@ -22,8 +31,8 @@ const SubcategoryPage = () => {
   }
 
   const subcategory = category.subcategories.find(
-    sub => sub.toLowerCase() === subcategoryName.toLowerCase()
-  );
+  sub => sub.name.toLowerCase() === subcategoryName.toLowerCase()
+);
 
   if (!subcategory) {
     return (
@@ -52,17 +61,17 @@ const SubcategoryPage = () => {
 
         <h1 className="text-4xl md:text-5xl font-bold text-center mb-6">
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500">
-            {subcategory}
+            {subcategory.name}
           </span>
         </h1>
         
         <p className="text-slate-400 text-center mb-12 text-lg">
-          You are viewing services for {subcategory} under the {category.name} category.
+          You are viewing services for {subcategory.name} under the {category.name} category.
         </p>
 
         <div className={`${category.bgColor} rounded-xl p-8 border border-slate-700`}>
           <h2 className="text-2xl font-semibold mb-4 text-slate-100">
-            Find professionals for {subcategory}
+            Find professionals for {subcategory.name}
           </h2>
           <p className="text-slate-400 mb-6">
             Our professionals are verified and rated by the community to ensure the best service.
