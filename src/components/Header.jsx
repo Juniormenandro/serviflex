@@ -15,7 +15,9 @@ import {
   Podcast,
   PanelTop,
   Building,
-  LayoutDashboard
+  LayoutDashboard,
+  Grid,
+  Star
 } from 'lucide-react';
 
 import {
@@ -35,7 +37,7 @@ const Header = () => {
   // fecha o menu 
   useEffect(() => {
     setOpen(false); 
-  }, [location.pathname]);
+  }, [location.pathname, location.hash]);
 
   // Função login
   const handleLoginGoogle = async () => {
@@ -51,12 +53,26 @@ const Header = () => {
     if (error) console.log('Erro ao sair:', error.message);
   };
 
+  const handleLogoClick = () => {
+  if (location.pathname === '/') {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (open) {
+      setOpen(false)
+    }
+  } else {
+    navigate('/');
+  }
+};
+
+
   const menuItems = user
   ? [
       { label: 'Appointments', isComponent: true, component: <AppointmentStatusSheet onClose={() => setOpen(false)} /> },
-      { label: 'Admin Dashboard', path: '/admin', icon: LayoutDashboard }, 
+      { label: 'Admin Dashboard', path: '/admin', icon: LayoutDashboard },
+      { label: 'Categories', path: '/#categories-section', icon: Grid },
+      { label: 'Reviews', path: '/#Reviews', icon: Star },
+      { label: 'Contact', path: '/#contact', icon: Mail },
       { label: 'For Professionals', path: '/professional-register', icon: Briefcase },
-      { label: 'Contact', path: '/contact', icon: Mail },
       { label: 'Blog', path: '/blog', icon: Podcast },
       { label: 'Press', path: '/press', icon: PanelTop },
       { label: 'About Us', path: '/about', icon: Building },
@@ -64,6 +80,7 @@ const Header = () => {
     ]
   : [
       { label: 'Login', isAction: true, action: handleLoginGoogle, icon: LogIn },
+      { label: 'Categories', path: '/#categories-section', icon: Grid },
       { label: 'For Professionals', path: '/professional-register', icon: Briefcase },
       { label: 'Contact', path: '/contact', icon: Mail },
       { label: 'Blog', path: '/blog', icon: Podcast },
@@ -81,13 +98,13 @@ const Header = () => {
     >
       <div className="container flex h-20 items-center justify-between">
         <motion.div whileHover={{ scale: 1.05 }}>
-          <Link
-            to="/"
+          <button
+            onClick={handleLogoClick}
             className="flex items-center space-x-2 text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 transition-all"
           >
             <Briefcase className="h-8 w-8 text-green-400" />
             <span>ServiFlex</span>
-          </Link>
+          </button>
         </motion.div>
         <Sheet open={open} onOpenChange={(state) => {
           setOpen(state);
@@ -105,7 +122,7 @@ const Header = () => {
             <SheetHeader>
               <SheetTitle className="text-slate-100">
                 <motion.div whileHover={{ scale: 1.05 }}>
-                    <div className="flex items-center space-x-1 mt-4 text-lg md:text-2xl md:font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 transition-all">
+                    <button onClick={handleLogoClick} className="flex items-center space-x-1 mt-4 text-lg md:text-2xl md:font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 transition-all">
                     {user
                     ?
                       <><User className="h-5 w-5 md:h-8 md:w-8 text-green-400" />
@@ -114,7 +131,7 @@ const Header = () => {
                       <><Menu className="h-5 w-5 md:h-8 md:w-8 text-green-400" />
                       <span>Menu ServiFlex </span></>
                     }
-                    </div>
+                    </button>
                 </motion.div>
               </SheetTitle>
             </SheetHeader>

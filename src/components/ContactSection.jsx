@@ -5,7 +5,7 @@ import { Phone, Mail, MessageSquare, Clock } from 'lucide-react';
 import { supabase } from '@/lib/supabaseClient';
 import { toast } from 'react-hot-toast';
 
-const ContactPage = () => {
+const ContactSection = () => {
   const {
     register,
     handleSubmit,
@@ -162,4 +162,4 @@ const ContactPage = () => {
   );
 };
 
-export default ContactPage;
+export default ContactSection;

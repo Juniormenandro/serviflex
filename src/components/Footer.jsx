@@ -25,7 +25,6 @@ const Footer = () => {
       title: 'Support',
       links: [
         { name: 'Help / FAQ', to: '/help' },
-        { name: 'Contact', to: '/contact' },
         { name: 'Terms of Service', to: '/terms' },
         { name: 'Privacy Policy', to: '/privacy' },
       ],

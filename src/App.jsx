@@ -13,7 +13,6 @@ import CareersPage from '@/pages/CareersPage';
 import PressPage from '@/pages/PressPage';
 import BlogPage from '@/pages/BlogPage';
 import HelpFaqPage from '@/pages/HelpFaqPage';
-import ContactPage from '@/pages/ContactPage';
 import TermsPage from '@/pages/TermsPage';
 import PrivacyPage from '@/pages/PrivacyPage';
 import ProfessionalRegisterPage from '@/pages/ProfessionalRegisterPage';
@@ -45,7 +44,6 @@ function App() {
             
             {/* Support */}
             <Route path="/help" element={<HelpFaqPage />} />
-            <Route path="/contact" element={<ContactPage />} />
             <Route path="/terms" element={<TermsPage />} />
             <Route path="/privacy" element={<PrivacyPage />} />
             
