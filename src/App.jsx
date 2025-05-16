@@ -2,8 +2,12 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
+import { AnimatePresence } from 'framer-motion';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import ScrollToTop from './components/ui/ScrollToTop';
+import AdminProtectedRoute from './components/ui/AdminProtectedRoute';
+
 import LoginPage from './pages/LoginPage';
 import HomePage from '@/pages/HomePage';
 import CategoryPage from '@/pages/CategoryPage';
@@ -15,14 +19,9 @@ import BlogPage from '@/pages/BlogPage';
 import HelpFaqPage from '@/pages/HelpFaqPage';
 import TermsPage from '@/pages/TermsPage';
 import PrivacyPage from '@/pages/PrivacyPage';
-import ProfessionalRegisterPage from '@/pages/ProfessionalRegisterPage';
-import HowItWorksPage from '@/pages/HowItWorksPage';
-import BenefitsPage from '@/pages/BenefitsPage';
-import { AnimatePresence } from 'framer-motion';
-import ScrollToTop from './components/ui/ScrollToTop';
-import AdminProtectedRoute from './components/ui/AdminProtectedRoute';
 import AdminDashboardPage from './pages/AdminDashboard';
 import AdminServicesPage from './pages/AdminServices';
+import AppointmentStatusSheetPage from './pages/AppointmentStatusSheet';
 
 function App() {
   return (
@@ -47,14 +46,11 @@ function App() {
             <Route path="/help" element={<HelpFaqPage />} />
             <Route path="/terms" element={<TermsPage />} />
             <Route path="/privacy" element={<PrivacyPage />} />
-            
-            {/* For Professionals */}
-            <Route path="/professional-register" element={<ProfessionalRegisterPage />} />
-            <Route path="/how-it-works" element={<HowItWorksPage />} />
-            <Route path="/benefits" element={<BenefitsPage />} />
-            
-            {/* New Routes */}
-            <Route path="/login" element={<div>Login Page</div>} />
+
+            {/* client Routes */}
+            <Route path="/client/appointments" element={<AppointmentStatusSheetPage />} />
+
+            {/* Admin Routes */}           
             <Route path="/admin" element={<AdminProtectedRoute><AdminDashboardPage /></AdminProtectedRoute>} />
             <Route path="/admin/categoria" element={<AdminProtectedRoute><AdminServicesPage /></AdminProtectedRoute>} />
 

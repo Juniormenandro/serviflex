@@ -1,8 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Search, Calendar, Star, CreditCard } from 'lucide-react';
+import ProfessionalRegisterPage from './ProfessionalRegisterPage';
+import BenefitsPage from './BenefitsPage';
 
-const HowItWorksPage = () => {
+const HowItWorksSection = () => {
   const steps = [
     {
       icon: Search,
@@ -46,6 +48,7 @@ const HowItWorksPage = () => {
   ];
 
   return (
+    <>
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -114,20 +117,12 @@ const HowItWorksPage = () => {
             ))}
           </div>
         </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.3 }}
-          className="mt-12 text-center"
-        >
-          <button className="px-8 py-4 bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-green-500/50 transition-all duration-300">
-            Get Started Now
-          </button>
-        </motion.div>
       </div>
     </motion.div>
+    <ProfessionalRegisterPage />
+    <BenefitsPage />
+  </>
   );
 };
 
-export default HowItWorksPage;
+export default HowItWorksSection;

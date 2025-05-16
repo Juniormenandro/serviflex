@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import { supabase } from '@/lib/supabaseClient';
 import { useUser } from '@supabase/auth-helpers-react';
-import AppointmentStatusSheet from '@/components/AppointmentStatusSheet';
 import {
   Menu,
   User,
@@ -18,7 +17,8 @@ import {
   LayoutDashboard,
   Grid,
   Star,
-  Settings
+  Settings,
+  Calendar
 } from 'lucide-react';
 
 import {
@@ -66,31 +66,41 @@ const Header = () => {
 };
 
 
+  const ADMIN_EMAIL = import.meta.env.VITE_ADMIN_EMAIL;
+
   const menuItems = user
-  ? [
-      { label: 'Appointments', isComponent: true, component: <AppointmentStatusSheet onClose={() => setOpen(false)} /> },
-      { label: 'Admin Dashboard', path: '/admin', icon: LayoutDashboard },
-      { label: 'Categories Dashboard', path: '/admin/categoria', icon: Settings },
-      { label: 'Categories', path: '/#categories-section', icon: Grid },
-      { label: 'Reviews', path: '/#Reviews', icon: Star },
-      { label: 'Contact', path: '/#contact', icon: Mail },
-      { label: 'For Professionals', path: '/professional-register', icon: Briefcase },
-      { label: 'Blog', path: '/blog', icon: Podcast },
-      { label: 'Press', path: '/press', icon: PanelTop },
-      { label: 'About Us', path: '/about', icon: Building },
-      { label: 'Logout', isAction: true, action: handleLogout, icon: LogOut },
-    ]
-  : [
-      { label: 'Login', isAction: true, action: handleLoginGoogle, icon: LogIn },
-      { label: 'Categories', path: '/#categories-section', icon: Grid },
-      { label: 'Reviews', path: '/#Reviews', icon: Star },
-      { label: 'Contact', path: '/#contact', icon: Mail },      
-      { label: 'For Professionals', path: '/professional-register', icon: Briefcase },
-      { label: 'Contact', path: '/contact', icon: Mail },
-      { label: 'Blog', path: '/blog', icon: Podcast },
-      { label: 'Press', path: '/press', icon: PanelTop },
-      { label: 'About Us', path: '/about', icon: Building },
-    ];
+    ? [
+        // Itens visíveis para qualquer usuário logado
+        { label: 'Appointments', path: '/client/appointments', icon: Calendar },
+
+        // Itens visíveis somente para o admin
+        ...(user.email === ADMIN_EMAIL
+          ? [
+              { label: 'Admin Dashboard', path: '/admin', icon: LayoutDashboard },
+              { label: 'Categories Dashboard', path: '/admin/categoria', icon: Settings },
+            ]
+          : []),
+
+        { label: 'Categories', path: '/#categories-section', icon: Grid },
+        { label: 'Reviews', path: '/#Reviews', icon: Star },
+        { label: 'Contact', path: '/#contact', icon: Mail },
+        { label: 'For Professionals', path: '/#HowItWorks', icon: Briefcase },
+        { label: 'Blog', path: '/blog', icon: Podcast },
+        { label: 'Press', path: '/press', icon: PanelTop },
+        { label: 'About Us', path: '/about', icon: Building },
+        { label: 'Logout', isAction: true, action: handleLogout, icon: LogOut },
+      ]
+    : [
+        { label: 'Login', isAction: true, action: handleLoginGoogle, icon: LogIn },
+        { label: 'Categories', path: '/#categories-section', icon: Grid },
+        { label: 'Reviews', path: '/#Reviews', icon: Star },
+        { label: 'Contact', path: '/#contact', icon: Mail },
+        { label: 'For Professionals', path: '/#HowItWorks', icon: Briefcase },
+        { label: 'Blog', path: '/blog', icon: Podcast },
+        { label: 'Press', path: '/press', icon: PanelTop },
+        { label: 'About Us', path: '/about', icon: Building },
+      ];
+
 
 
   return (
@@ -100,7 +110,7 @@ const Header = () => {
       transition={{ type: 'spring', stiffness: 50, delay: 0.1 }}
       className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
     >
-      <div className="container flex h-20 items-center justify-between">
+      <div className="container flex h-12 md:h-20 items-center justify-between">
         <motion.div whileHover={{ scale: 1.05 }}>
           <button
             onClick={handleLogoClick}
@@ -126,10 +136,10 @@ const Header = () => {
             <SheetHeader>
               <SheetTitle className="text-slate-100">
                 <motion.div whileHover={{ scale: 1.05 }}>
-                    <button onClick={handleLogoClick} className="flex items-center space-x-1 mt-4 text-lg md:text-2xl md:font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 transition-all">
+                    <button onClick={handleLogoClick} className="flex items-center space-x-1 text-sm md:text-2xl md:font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 transition-all">
                     {user
                     ?
-                      <><User className="h-5 w-5 md:h-8 md:w-8 text-green-400" />
+                      <><User className=" md:h-8 md:w-8 text-green-400" />
                       <span>Hello, {user.user_metadata.full_name}</span></> 
                     : 
                       <><Menu className="h-5 w-5 md:h-8 md:w-8 text-green-400" />
@@ -139,7 +149,7 @@ const Header = () => {
                 </motion.div>
               </SheetTitle>
             </SheetHeader>
-            <nav className="flex flex-col space-y-4 mt-12">
+            <nav className="flex flex-col space-y-4 mt-3 md:mt-10">
             {menuItems.map((item) => {
               if (item.isComponent) {
                 return (
@@ -162,7 +172,7 @@ const Header = () => {
                     }
                   }}
                   disabled={item.isDisabled}
-                  className={`flex items-center space-x-2 mt-4 px-2 py-1 text-lg rounded-lg border border-slate-700 md:text-2xl md:font-bold
+                  className={`flex items-center pl-1 py-2 text-base rounded-lg border border-slate-700 md:text-2xl md:font-bold
                     ${item.isDisabled
                       ? 'bg-green-500 text-white '
                       : isActive

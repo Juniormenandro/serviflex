@@ -4,6 +4,7 @@ import Hero from '@/components/Hero';
 import ServiceCategories from '@/components/ServiceCategories';
 import ReviewSection from '../components/ReviewSection';
 import ContactSection from '../components/ContactSection';
+import HowItWorksSection from '../components/HowItWorksSection';
 import { motion } from 'framer-motion';
 
 const HomePage = () => {
@@ -57,6 +58,15 @@ const HomePage = () => {
         id="contact"
       >
         <ContactSection />
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -20 }}
+        transition={{ duration: 0.5 }}
+        id="HowItWorks"
+      >
+        <HowItWorksSection />
       </motion.div>
     </>
   );

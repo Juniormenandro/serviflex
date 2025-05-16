@@ -38,7 +38,6 @@ const ServiceCategories = () => {
   useEffect(() => {
     const loadCategories = async () => {
       const data = await fetchFormattedCategories();
-      console.log('Categorias formatadas:', data);
       setCategories(data);
     };
     loadCategories();

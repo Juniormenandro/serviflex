@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { supabase } from '@/lib/supabaseClient';
-import { useUser } from '@supabase/auth-helpers-react';
 import { ShieldCheck, Mail, Users, Star, Loader2, Trash2 } from 'lucide-react';
 import ServicosConcluidosSection from '../components/ServicosConcluidosSection';
 import usePaginatedData from '../lib/usePaginatedData';
 
 const AdminDashboardPage = () => {
-  const user = useUser();
   const [loading, setLoading] = useState(true);
   const [appointments, setAppointments] = useState([]);
   const [contacts, setContacts] = useState([]);
@@ -61,8 +59,6 @@ const AdminDashboardPage = () => {
 
   const { paginatedData: paginatedProfessional, totalPages: totalProfessionalPages, currentPage: currentProfessionalPage, setCurrentPage: setCurrentProfessionalPage}
     = usePaginatedData({ data: professionals, itemsPerPage: 4 });
-
-  if (!user) return null;
 
   return (
     <motion.div

@@ -1,6 +1,7 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { Wallet, Clock, Shield, Award, Target, Users, Zap, TrendingUp } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const BenefitsPage = () => {
   const mainBenefits = [
@@ -48,7 +49,20 @@ const BenefitsPage = () => {
       description: 'Access to training and development opportunities.'
     }
   ];
-
+  const location = useLocation();
+  const navigate = useNavigate();
+  const handleLogoClick = () => {
+    if (location.pathname === '/') {
+      // Já está na home, só rola até o elemento
+      const section = document.getElementById('HowItWorks');
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      // Redireciona para a home com hash
+      navigate('/#HowItWorks');
+    }
+  };
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -128,7 +142,7 @@ const BenefitsPage = () => {
           <p className="text-slate-300">
             Join thousands of professionals already growing with ServiFlex
           </p>
-          <button className="px-8 py-4 bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-green-500/50 transition-all duration-300">
+          <button onClick={handleLogoClick} className="px-8 py-4 bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-green-500/50 transition-all duration-300">
             Register as a Professional
           </button>
         </motion.div>
