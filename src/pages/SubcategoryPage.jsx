@@ -15,6 +15,10 @@ const SubcategoryPage = () => {
   );
 
   useEffect(() => {
+    window.scrollTo({ top: 70, behavior: 'smooth' });
+  }, []);
+
+  useEffect(() => {
       const loadCategories = async () => {
         const data = await fetchFormattedCategories();
         setCategories(data);

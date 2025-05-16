@@ -1,5 +1,3 @@
-
-import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { AnimatePresence } from 'framer-motion';
@@ -13,8 +11,6 @@ import HomePage from '@/pages/HomePage';
 import CategoryPage from '@/pages/CategoryPage';
 import SubcategoryPage from '@/pages/SubcategoryPage';
 import AboutPage from '@/pages/AboutPage';
-import CareersPage from '@/pages/CareersPage';
-import PressPage from '@/pages/PressPage';
 import BlogPage from '@/pages/BlogPage';
 import HelpFaqPage from '@/pages/HelpFaqPage';
 import TermsPage from '@/pages/TermsPage';
@@ -38,8 +34,6 @@ function App() {
             
             {/* Company */}
             <Route path="/about" element={<AboutPage />} />
-            <Route path="/careers" element={<CareersPage />} />
-            <Route path="/press" element={<PressPage />} />
             <Route path="/blog" element={<BlogPage />} />
             
             {/* Support */}

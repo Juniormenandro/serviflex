@@ -28,13 +28,18 @@ const ServiceCategories = () => {
   const [categories, setCategories] = useState([]);
 
   const handleCategoryClick = (categoryName) => {
-    navigate(`/category/${categoryName.toLowerCase()}`);
-  };
+  navigate(`/category/${categoryName.toLowerCase()}`);
+};
+
 
   const handleSubcategoryClick = (e, categoryName, subcategoryName) => {
     e.stopPropagation();
     navigate(`/category/${categoryName.toLowerCase()}/${subcategoryName.toLowerCase()}`);
+    setTimeout(() => {
+    window.scrollTo({ top: 30, behavior: 'smooth' });
+  }, 200);
   };
+
   useEffect(() => {
     const loadCategories = async () => {
       const data = await fetchFormattedCategories();

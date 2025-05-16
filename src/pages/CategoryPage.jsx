@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { fetchFormattedCategories } from '@/lib/categoriesData';
 import { iconMap } from '@/lib/categoriesData';
+import { ArrowLeft } from 'lucide-react';
 
 const CategoryPage = () => {
   const { categoryName } = useParams();
@@ -12,6 +13,18 @@ const CategoryPage = () => {
   const category = categories.find(
     cat => cat.name.toLowerCase() === categoryName.toLowerCase()
   );
+
+  const handleClick = (e, categoryName, subcategoryName) => {
+    e.stopPropagation();
+    navigate(`/category/${categoryName}/${subcategoryName.toLowerCase()}`);
+    setTimeout(() => {
+    window.scrollTo({ top: 100, behavior: 'smooth' });
+  }, 200);
+  };
+
+  useEffect(() => {
+    window.scrollTo({ top: 30, behavior: 'smooth' });
+  }, []);
 
   useEffect(() => {
     const loadCategories = async () => {
@@ -41,6 +54,14 @@ const CategoryPage = () => {
       className="container py-16 md:py-24"
     >
       <div className="max-w-4xl mx-auto">
+        <Link
+          to={`/#categories-section`}
+          className="inline-flex items-center text-slate-400 hover:text-green-400 transition-colors mb-8"
+        >
+          <ArrowLeft className="h-5 w-5 mr-2" />
+          Back to Category
+        </Link>
+
         <div className="flex items-center justify-center mb-8">
           <CategoryIcon className={`h-24 w-24 ${category.color}`} strokeWidth={1.5} />
         </div>
@@ -60,7 +81,7 @@ const CategoryPage = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
-              onClick={() => navigate(`/category/${categoryName}/${subcategory.name.toLowerCase()}`)}
+              onClick={(e) => handleClick(e, category.name, subcategory.name)}
               className={`${category.bgColor} ${category.hoverColor} p-6 rounded-xl border border-slate-700 cursor-pointer transition-all duration-300 hover:scale-105`}
             >
               <h3 className="text-xl font-semibold mb-2 text-slate-100">{subcategory.name}</h3>

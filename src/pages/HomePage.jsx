@@ -1,18 +1,21 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import Hero from '@/components/Hero';
 import ServiceCategories from '@/components/ServiceCategories';
 import ReviewSection from '../components/ReviewSection';
 import ContactSection from '../components/ContactSection';
 import HowItWorksSection from '../components/HowItWorksSection';
-import { motion } from 'framer-motion';
 
 const HomePage = () => {
   const location = useLocation();
-
   useEffect(() => {
+    const hash = window.location.hash;
+    if (hash.includes('access_token')) {
+      return;
+    }
     if (location.hash) {
-      const target = document.querySelector(location.hash);
+    const target = document.querySelector(location.hash);
       if (target) {
         setTimeout(() => {
           target.scrollIntoView({ behavior: 'smooth' });

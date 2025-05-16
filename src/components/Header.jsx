@@ -34,11 +34,6 @@ const Header = () => {
   const location = useLocation();
   const user = useUser();
   const [open, setOpen] = useState(false);
-  
-  // fecha o menu 
-  useEffect(() => {
-    setOpen(false); 
-  }, [location.pathname, location.hash]);
 
   // Função login
   const handleLoginGoogle = async () => {
@@ -65,14 +60,17 @@ const Header = () => {
   }
 };
 
+  // fecha o menu 
+  useEffect(() => {
+    setOpen(false); 
+  }, [location.pathname, location.hash]);
+
+  
+ 
 
   const ADMIN_EMAIL = import.meta.env.VITE_ADMIN_EMAIL;
-
   const menuItems = user
     ? [
-        // Itens visíveis para qualquer usuário logado
-        { label: 'Appointments', path: '/client/appointments', icon: Calendar },
-
         // Itens visíveis somente para o admin
         ...(user.email === ADMIN_EMAIL
           ? [
@@ -80,13 +78,12 @@ const Header = () => {
               { label: 'Categories Dashboard', path: '/admin/categoria', icon: Settings },
             ]
           : []),
-
+        { label: 'Appointments', path: '/client/appointments', icon: Calendar },
         { label: 'Categories', path: '/#categories-section', icon: Grid },
         { label: 'Reviews', path: '/#Reviews', icon: Star },
         { label: 'Contact', path: '/#contact', icon: Mail },
         { label: 'For Professionals', path: '/#HowItWorks', icon: Briefcase },
         { label: 'Blog', path: '/blog', icon: Podcast },
-        { label: 'Press', path: '/press', icon: PanelTop },
         { label: 'About Us', path: '/about', icon: Building },
         { label: 'Logout', isAction: true, action: handleLogout, icon: LogOut },
       ]
@@ -97,7 +94,6 @@ const Header = () => {
         { label: 'Contact', path: '/#contact', icon: Mail },
         { label: 'For Professionals', path: '/#HowItWorks', icon: Briefcase },
         { label: 'Blog', path: '/blog', icon: Podcast },
-        { label: 'Press', path: '/press', icon: PanelTop },
         { label: 'About Us', path: '/about', icon: Building },
       ];
 
@@ -139,7 +135,7 @@ const Header = () => {
                     <button onClick={handleLogoClick} className="flex items-center space-x-1 text-sm md:text-2xl md:font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 transition-all">
                     {user
                     ?
-                      <><User className=" md:h-8 md:w-8 text-green-400" />
+                      <><User className="md:h-8 md:w-8 text-green-400" />
                       <span>Hello, {user.user_metadata.full_name}</span></> 
                     : 
                       <><Menu className="h-5 w-5 md:h-8 md:w-8 text-green-400" />
@@ -149,17 +145,11 @@ const Header = () => {
                 </motion.div>
               </SheetTitle>
             </SheetHeader>
-            <nav className="flex flex-col space-y-4 mt-3 md:mt-10">
+            <nav className="flex flex-col space-y-5 mt-5 md:mt-10">
             {menuItems.map((item) => {
-              if (item.isComponent) {
-                return (
-                  <div key={item.label} className="w-full">
-                    {item.component}
-                  </div>
-                );
-              }
               const Icon = item.icon;
-              const isActive = item.path === location.pathname;
+              const currentPath = `${location.pathname}${location.hash}`;
+              const isActive = item.path === currentPath;
               return (
                 <motion.button
                   key={item.label}
@@ -172,7 +162,7 @@ const Header = () => {
                     }
                   }}
                   disabled={item.isDisabled}
-                  className={`flex items-center pl-1 py-2 text-base rounded-lg border border-slate-700 md:text-2xl md:font-bold
+                  className={`flex items-center pl-2 py-1 md:py-2 text-base rounded-lg border border-slate-700 md:text-2xl md:font-bold
                     ${item.isDisabled
                       ? 'bg-green-500 text-white '
                       : isActive

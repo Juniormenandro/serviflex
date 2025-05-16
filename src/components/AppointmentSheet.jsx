@@ -46,7 +46,8 @@ const AppointmentSheet = () => {
     } else {
       toast.success('Scheduling completed successfully!');
       reset();
-      setOpen(false); // fecha o menu
+      setOpen(false);
+      setTimeout(() => navigate('/client/appointments'), 2000);
     }
   };
 

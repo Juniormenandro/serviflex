@@ -63,11 +63,11 @@ const ContactSection = () => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
-      className="container py-16 md:py-24"
+      className="container py-10 md:py-24"
     >
       <div className="max-w-4xl mx-auto">
         <motion.h1 
-          className="text-4xl md:text-5xl font-bold text-center mb-6"
+          className="text-3xl md:text-5xl font-bold text-center mb-6"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
@@ -76,7 +76,7 @@ const ContactSection = () => {
         </motion.h1>
 
         <motion.p 
-          className="text-xl text-slate-300 text-center mb-12"
+          className="text-lg md:text-xl text-slate-300 text-center mb-12"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
@@ -84,14 +84,14 @@ const ContactSection = () => {
           We are here to help you
         </motion.p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
           {contactMethods.map((method, index) => (
             <motion.div
               key={method.title}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 + index * 0.1 }}
-              className="bg-slate-800/50 p-6 rounded-xl border border-slate-700 flex items-center space-x-4"
+              className="bg-slate-800/50 p-4 md:p-8 rounded-xl border border-slate-700 flex items-center space-x-4"
             >
               <method.icon className="h-10 w-10 text-green-400" />
               <div>
@@ -109,15 +109,15 @@ const ContactSection = () => {
           transition={{ delay: 0.6 }}
           className="bg-gradient-to-r from-green-500/10 to-blue-500/10 p-8 rounded-xl border border-slate-700"
         >
-          <h2 className="text-2xl font-semibold mb-6">Send us a message</h2>
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+          <h2 className="md:text-2xl font-semibold mb-6">Send us a message</h2>
+          <form onSubmit={handleSubmit(onSubmit)} className="md:space-y-6 space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label className="block text-sm font-medium mb-2">Name</label>
                 <input
                   type="text"
                   {...register('name', { required: 'Name is required' })}
-                  className="w-full px-4 py-3 bg-slate-800 rounded-lg border border-slate-700 focus:border-green-400 focus:outline-none"
+                  className="w-full px-4 py-2 md:py-3 bg-slate-800 rounded-lg border border-slate-700 focus:border-green-400 focus:outline-none"
                   placeholder="Your name"
                 />
                 {errors.name && <p className="text-red-400 text-sm mt-1">{errors.name.message}</p>}
@@ -127,7 +127,7 @@ const ContactSection = () => {
                 <input
                   type="email"
                   {...register('email', { required: 'Email is required' })}
-                  className="w-full px-4 py-3 bg-slate-800 rounded-lg border border-slate-700 focus:border-green-400 focus:outline-none"
+                  className="w-full px-4 py-2 md:py-3 bg-slate-800 rounded-lg border border-slate-700 focus:border-green-400 focus:outline-none"
                   placeholder="your@email.com"
                 />
                 {errors.email && <p className="text-red-400 text-sm mt-1">{errors.email.message}</p>}
@@ -138,7 +138,7 @@ const ContactSection = () => {
               <input
                 type="text"
                 {...register('subject', { required: 'Subject is required' })}
-                className="w-full px-4 py-3 bg-slate-800 rounded-lg border border-slate-700 focus:border-green-400 focus:outline-none"
+                className="w-full px-4 py-2 md:py-3 bg-slate-800 rounded-lg border border-slate-700 focus:border-green-400 focus:outline-none"
                 placeholder="How can we help you?"
               />
               {errors.subject && <p className="text-red-400 text-sm mt-1">{errors.subject.message}</p>}
@@ -147,12 +147,12 @@ const ContactSection = () => {
               <label className="block text-sm font-medium mb-2">Message</label>
               <textarea
                 {...register('message', { required: 'Message is required' })}
-                className="w-full px-4 py-3 bg-slate-800 rounded-lg border border-slate-700 focus:border-green-400 focus:outline-none h-32"
+                className="w-full px-4 py-2 md:py-3 bg-slate-800 rounded-lg border border-slate-700 focus:border-green-400 focus:outline-none h-32"
                 placeholder="Describe your message..."
               ></textarea>
               {errors.message && <p className="text-red-400 text-sm mt-1">{errors.message.message}</p>}
             </div>
-            <button type="submit" className="w-full px-8 py-4 bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-green-500/50 transition-all duration-300">
+            <button type="submit" className="w-full md:px-8 py-3 bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-green-500/50 transition-all duration-300">
               Send Message
             </button>
           </form>

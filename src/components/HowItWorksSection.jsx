@@ -28,37 +28,19 @@ const HowItWorksSection = () => {
     }
   ];
 
-  const features = [
-    {
-      title: 'Dedicated Support',
-      description: 'Our team is always available to help you in any situation.'
-    },
-    {
-      title: 'Professional Tools',
-      description: 'Access to management tools to organize your jobs and finances.'
-    },
-    {
-      title: 'Professional Insurance',
-      description: 'Protection for you and your clients during service delivery.'
-    },
-    {
-      title: 'Continuous Training',
-      description: 'Access to training and resources to improve your skills.'
-    }
-  ];
-
   return (
     <>
+    <ProfessionalRegisterPage />
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
-      className="container py-16 md:py-24"
+      className="container py-10 md:py-24"
     >
       <div className="max-w-4xl mx-auto">
         <motion.h1 
-          className="text-4xl md:text-5xl font-bold text-center mb-6"
+          className="text-3xl md:text-5xl font-bold text-center mb-6"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
@@ -67,7 +49,7 @@ const HowItWorksSection = () => {
         </motion.h1>
 
         <motion.p 
-          className="text-xl text-slate-300 text-center mb-12"
+          className="text-lg text-slate-300 text-center mb-8"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
@@ -75,51 +57,27 @@ const HowItWorksSection = () => {
           See how easy it is to work with ServiFlex
         </motion.p>
 
-        <div className="space-y-8 mb-16">
+        <div className="space-y-6 mb-16">
           {steps.map((step, index) => (
             <motion.div
               key={step.title}
               initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.4 + index * 0.1 }}
-              className="bg-slate-800/50 p-8 rounded-xl border border-slate-700 flex items-start gap-6"
+              className=" flex-col bg-slate-800/50 p-4 md:p-8 rounded-xl border border-slate-700 flex items-start gap-6"
             >
-              <div className="bg-gradient-to-br from-green-400/20 to-blue-500/20 p-4 rounded-lg">
-                <step.icon className="h-8 w-8 text-green-400" />
+            <div className='flex gap-x-3 items-center'>
+              <div className=" bg-gradient-to-br from-green-400/20 to-blue-500/20 p-4 rounded-lg">
+                <step.icon className=" text-green-400" />
               </div>
-              <div>
-                <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
-                <p className="text-slate-300">{step.description}</p>
-              </div>
+              <h3 className="text-lg md:text-2xl font-semibold mb-2">{step.title}</h3>
+            </div>
+            <p className="text-sm md:text-base text-slate-300">{step.description}</p>
             </motion.div>
           ))}
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8 }}
-          className="bg-gradient-to-r from-green-500/10 to-blue-500/10 p-8 rounded-xl border border-slate-700"
-        >
-          <h2 className="text-2xl font-semibold mb-8 text-center">Exclusive Features</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {features.map((feature, index) => (
-              <motion.div
-                key={feature.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.9 + index * 0.1 }}
-                className="bg-slate-800/50 p-6 rounded-lg border border-slate-700"
-              >
-                <h3 className="font-semibold mb-2">{feature.title}</h3>
-                <p className="text-slate-300 text-sm">{feature.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </motion.div>
-    <ProfessionalRegisterPage />
     <BenefitsPage />
   </>
   );
