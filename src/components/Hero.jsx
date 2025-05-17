@@ -154,12 +154,12 @@ const Hero = () => {
             </div>
 
             {/* Formulário fixo no fim */}
-            <form onSubmit={handleSendMessage} className="flex gap-2 mt-4 pt-2 border-t border-slate-700">
+            <form onSubmit={handleSendMessage} className=" flex gap-2 mt-4 pt-2 border-t border-slate-700">
               <Input
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 placeholder="Type your message..."
-                className="flex-grow bg-slate-700/50 border-slate-600 focus:border-green-400"
+                className=" text-base flex-grow  bg-slate-700/50 border-slate-600 focus:border-green-400"
               />
               <Button
                 type="submit"

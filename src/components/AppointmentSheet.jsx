@@ -61,11 +61,11 @@ const AppointmentSheet = () => {
           Request a quote for {subcategoryName}
         </motion.button>
       </SheetTrigger>
-      <SheetContent className="bg-slate-900/95 backdrop-blur-lg border-slate-800">
+      <SheetContent className="w-[90%] bg-slate-900/95 backdrop-blur-lg border-slate-800">
         <SheetHeader>
           <SheetTitle className="text-slate-100">
             <motion.div whileHover={{ scale: 1.05 }}>
-                <div className="flex items-center space-x-2 mt-4 text-xl md:text-2xl md:font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 transition-all">
+                <div className="flex items-center space-x-1 mt-4 text-lg md:text-2xl md:font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 transition-all">
                     <Calendar className="h-5 w-5 md:h-8 md:w-8 text-green-400" />
                     <span>Service Scheduling</span>
                 </div>
@@ -82,41 +82,41 @@ const AppointmentSheet = () => {
         >
           {/* Nome */}
           <div>
-            <label className="block text-sm mb-1">Your name</label>
+            <label className="block  mb-1">Your name</label>
             <Input {...register('name', { required: 'Name is required' })} placeholder="Enter your name" />
-            {errors.name && <p className="text-red-400 text-sm">{errors.name.message}</p>}
+            {errors.name && <p className="text-red-400 ">{errors.name.message}</p>}
           </div>
 
           {/* Telefone */}
           <div>
-            <label className="block text-sm mb-1">Telephone</label>
+            <label className="block  mb-1">Telephone</label>
             <Input type="tel" {...register('phone', { required: 'Telephone is mandatory' })} placeholder="(00) 000-0000" />
-            {errors.phone && <p className="text-red-400 text-sm">{errors.phone.message}</p>}
+            {errors.phone && <p className="text-red-400 ">{errors.phone.message}</p>}
           </div>
 
           {/* Data */}
           <div>
-            <label className="block text-sm mb-1">Preferred Date</label>
+            <label className="block w-full mb-1">Preferred Date</label>
             <Input type="date" {...register('date', { required: 'Date is mandatory' })} />
-            {errors.date && <p className="text-red-400 text-sm">{errors.date.message}</p>}
+            {errors.date && <p className="text-red-400 ">{errors.date.message}</p>}
           </div>
 
           {/* Horário */}
           <div>
-            <label className="block text-sm mb-1">Preferred Schedule</label>
+            <label className="block w-full mb-1">Preferred Schedule</label>
             <Input type="time" {...register('time', { required: 'Schedule is mandatory' })} />
-            {errors.time && <p className="text-red-400 text-sm">{errors.time.message}</p>}
+            {errors.time && <p className="text-red-400 ">{errors.time.message}</p>}
           </div>
 
           {/* Observações */}
           <div>
-            <label className="block text-sm mb-1">Observations</label>
+            <label className="block  mb-1">Observations</label>
             <Input {...register('notes')} placeholder="Any observations?" />
           </div>
 
           <motion.button
             whileHover={{ scale: 1.05 }}
-            className="w-full py-2 px-4 sm:py-4 sm:px-6 rounded-lg sm:rounded-xl text-sm sm:text-base font-medium sm:font-semibold bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 text-white transition-all duration-300 shadow-md hover:shadow-green-500/50"
+            className="w-full mt-3 py-2 px-4 sm:py-4 sm:px-6 rounded-lg sm:rounded-xl text-xs sm:text-base font-medium sm:font-semibold bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 text-white transition-all duration-300 shadow-md hover:shadow-green-500/50"
             >
             Confirm Appointment
           </motion.button>
