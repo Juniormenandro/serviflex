@@ -7,7 +7,7 @@ import { useUser } from '@supabase/auth-helpers-react';
 import { toast } from 'react-hot-toast';
 import {Calendar } from 'lucide-react';
 import {
-  Sheet,
+  Sheet, 
   SheetTrigger,
   SheetContent,
   SheetHeader,
@@ -44,7 +44,7 @@ const AppointmentSheet = () => {
       console.error('Error saving:', error.message);
       toast.error('Error saving schedule.');
     } else {
-      toast.success('Scheduling completed successfully!');
+      toast.success('Completed successfully!');
       reset();
       setOpen(false);
       setTimeout(() => navigate('/client/appointments'), 2000);
@@ -90,7 +90,7 @@ const AppointmentSheet = () => {
           {/* Telefone */}
           <div>
             <label className="block text-sm mb-1">Telephone</label>
-            <Input {...register('phone', { required: 'Telephone is mandatory' })} placeholder="(00) 00000-0000" />
+            <Input type="tel" {...register('phone', { required: 'Telephone is mandatory' })} placeholder="(00) 000-0000" />
             {errors.phone && <p className="text-red-400 text-sm">{errors.phone.message}</p>}
           </div>
 

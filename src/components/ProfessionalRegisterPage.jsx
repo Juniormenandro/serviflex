@@ -1,10 +1,8 @@
-import React from 'react';
 import { useForm } from 'react-hook-form';
 import { motion } from 'framer-motion';
 import { CheckCircle, Star, Wallet, Calendar } from 'lucide-react';
 import { supabase } from '@/lib/supabaseClient';
 import { toast } from 'react-hot-toast';
-
 
 const ProfessionalRegisterPage = () => {
   const {
@@ -12,8 +10,8 @@ const ProfessionalRegisterPage = () => {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm();
-
+  } = useForm();  
+  
   const onSubmit = async (data) => {
       const { error } = await supabase.from('ProfessionalRegister').insert({
         name: data.name,
@@ -23,13 +21,14 @@ const ProfessionalRegisterPage = () => {
         Experiência: data.Experiência,
         categoria: data.categoria,
       });
-  
       if (error) {
         console.error('Erro ao enviar:', error.message);
         toast.error('Erro ao enviar mensagem.');
       } else {
-        toast.success('Mensagem enviada com sucesso!');
+        toast.success('Completed successfully!');
         reset();
+        // setTimeout(() => navigate('/'), 1000);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     };
 

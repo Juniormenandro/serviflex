@@ -1,4 +1,3 @@
-import React from 'react';
 import { useForm } from 'react-hook-form';
 import { motion } from 'framer-motion';
 import { Phone, Mail, MessageSquare, Clock } from 'lucide-react';
@@ -27,6 +26,7 @@ const ContactSection = () => {
     } else {
       toast.success('Message sent successfully!');
       reset();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 

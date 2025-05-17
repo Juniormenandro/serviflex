@@ -60,7 +60,7 @@ const ReviewSection = () => {
       comment: newReview.comment,
       image: newReview.image
     };
-    const { data, error } = await supabase.from('reviews').insert([newEntry]);
+    const { data, error } = await supabase.from('reviews').insert([newEntry]).select();
 
     if (error) {
       console.error('Error saving:', error.message);
@@ -68,7 +68,11 @@ const ReviewSection = () => {
     }else{
       toast.success('Reviews completed successfully!');
       setOpen(false); // fecha o menu
-      setReviews([...(data ?? []), ...reviews]);
+      const { data: updated } = await supabase
+        .from('reviews')
+        .select('*')
+        .order('created_at', { ascending: false });
+      setReviews(updated || []);
       setNewReview({ rating: 5, comment: '', image: null });
     }
   };
