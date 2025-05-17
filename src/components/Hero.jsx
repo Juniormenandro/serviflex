@@ -1,27 +1,25 @@
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Send, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { v4 as uuidv4 } from 'uuid';
 
 const Hero = () => {
   const [isChatMode, setIsChatMode] = useState(false);
   const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [sessionId, setSessionId] = useState('');
 
-  // Simula resposta da IA
-  const generateAIResponse = (userMessage) => {
-    const responses = [
-      "Entendi sua necessidade! Posso ajudar você a encontrar o profissional ideal para esse serviço. Pode me contar mais detalhes?",
-      "Ótimo! Temos vários especialistas nessa área. Qual seria o melhor horário para o serviço?",
-      "Claro, posso ajudar com isso! Em qual região você precisa do serviço?",
-      "Perfeito! Vou buscar os melhores profissionais disponíveis para você. Tem alguma preferência específica?"
-    ];
-    return responses[Math.floor(Math.random() * responses.length)];
-  };
+  // Gera um ID único por sessão
+  useEffect(() => {
+    const id = localStorage.getItem('chat_session_id') || uuidv4();
+    localStorage.setItem('chat_session_id', id);
+    setSessionId(id);
+  }, []);
 
-  const handleSendMessage = (e) => {
+  const handleSendMessage = async (e) => {
     e.preventDefault();
     if (!inputValue.trim()) return;
 
@@ -33,19 +31,36 @@ const Hero = () => {
 
     setMessages(prev => [...prev, newUserMessage]);
     setInputValue('');
-
-    // Simula resposta da IA após 1 segundo
-    setTimeout(() => {
-      const aiResponse = {
-        id: Date.now() + 1,
-        text: generateAIResponse(inputValue),
-        sender: 'ai'
-      };
-      setMessages(prev => [...prev, aiResponse]);
-    }, 1000);
+    setLoading(true);
 
     if (!isChatMode) {
       setIsChatMode(true);
+    }
+
+    try {
+      const res = await fetch('https://a176-80-233-33-49.ngrok-free.app/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          session_id: sessionId,
+          message: inputValue
+        })
+      });
+
+      const data = await res.json();
+      const aiResponse = {
+        id: Date.now() + 1,
+        text: data.reply,
+        sender: 'ai'
+      };
+
+      setMessages(prev => [...prev, aiResponse]);
+    } catch (err) {
+      console.error('Erro ao enviar mensagem:', err);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -61,7 +76,6 @@ const Hero = () => {
       <div className="container relative z-10">
         <AnimatePresence mode="wait">
           {!isChatMode ? (
-            // Modo inicial
             <motion.div
               key="initial-mode"
               initial={{ opacity: 0 }}
@@ -71,55 +85,31 @@ const Hero = () => {
             >
               <motion.h1 
                 className="text-4xl md:text-6xl font-extrabold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-green-300 via-blue-400 to-purple-500"
-                initial={{ opacity: 0, y: -50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
               >
                 How can I help you today?
               </motion.h1>
-              <motion.p 
-                className="text-lg md:text-xl text-slate-300 mb-10 max-w-2xl mx-auto"
-                initial={{ opacity: 0, y: -30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-              >
+              <motion.p className="text-lg md:text-xl text-slate-300 mb-10 max-w-2xl mx-auto">
                 Hello! I'm your virtual assistant and I'm here to help you find the right professional for your service. Tell me what you need!
               </motion.p>
-              
+
               <form onSubmit={handleSendMessage} className="flex flex-col sm:flex-row max-w-xl mx-auto gap-4 mb-12">
-                <div className="relative flex-grow">
-                  <Input 
-                    value={inputValue}
-                    onChange={(e) => setInputValue(e.target.value)}
-                    placeholder="Digite sua mensagem..." 
-                    className="pl-4 pr-4 py-3 h-14 rounded-full text-lg bg-slate-800 border-2 border-slate-700 focus:border-green-400 focus:ring-green-400 transition-all duration-300 placeholder-slate-400"
-                  />
-                </div>
-                <Button 
+                <Input
+                  value={inputValue}
+                  onChange={(e) => setInputValue(e.target.value)}
+                  placeholder="Type your message..."
+                  className="pl-4 pr-4 py-3 h-14 rounded-full text-lg bg-slate-800 border-2 border-slate-700 focus:border-green-400"
+                />
+                <Button
                   type="submit"
-                  size="lg" 
-                  className="h-14 rounded-full text-lg bg-gradient-to-r from-green-500 to-blue-600 hover:from-green-600 hover:to-blue-700 text-white shadow-lg hover:shadow-green-500/50 transition-all duration-300 group"
+                  size="lg"
+                  className="h-14 rounded-full text-lg bg-gradient-to-r from-green-500 to-blue-600 text-white shadow-lg"
                 >
                   Start Chat
-                  <Send className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                  <Send className="ml-2 h-5 w-5" />
                 </Button>
               </form>
-
-              <motion.div 
-                className="flex justify-center items-center space-x-2 text-sm text-slate-400"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.6 }}
-              >
-                <span>24/7 Support</span>
-                <span className="text-green-400">&bull;</span>
-                <span>Instant Response</span>
-                <span className="text-blue-400">&bull;</span>
-                <span>Personalized Assistance</span>
-              </motion.div>
             </motion.div>
           ) : (
-            // Modo chat
             <motion.div
               key="chat-mode"
               initial={{ opacity: 0 }}
@@ -161,6 +151,15 @@ const Hero = () => {
                         </div>
                       </motion.div>
                     ))}
+                    {loading && (
+                      <motion.div
+                        className="flex justify-start"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                      >
+                        <div className="text-blue-300 italic text-sm">Typing...</div>
+                      </motion.div>
+                    )}
                   </AnimatePresence>
                 </div>
 
@@ -168,7 +167,7 @@ const Hero = () => {
                   <Input
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
-                    placeholder="Digite sua mensagem..."
+                    placeholder="Type your message..."
                     className="flex-grow bg-slate-700/50 border-slate-600 focus:border-green-400"
                   />
                   <Button
@@ -183,7 +182,6 @@ const Hero = () => {
           )}
         </AnimatePresence>
       </div>
-      <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-slate-900 to-transparent"></div>
     </section>
   );
 };
