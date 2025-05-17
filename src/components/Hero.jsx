@@ -33,8 +33,6 @@ const Hero = () => {
 
   useEffect(() => {
     localStorage.setItem(`chat_messages_${sessionId}`, JSON.stringify(messages));
-    console.log('sessionId: ',sessionId);
-    console.log('messages: ', messages);
   }, [messages]);
 
 
@@ -206,12 +204,14 @@ const Hero = () => {
 
             {/* Botão WhatsApp inteligente */}
             {messages.some(m => m.sender === 'ai' && m.text.toLowerCase().includes('whatsapp')) && (
-              <div className="text-center mt-6">
+              <div className="text-center text-xs ">
                 <p className="text-slate-400 mb-2">Do you want to continue with an attendant?</p>
                 <Button
                   onClick={openWhatsApp}
-                  className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg"
+                  className=" w-full h-8 bg-green-600 hover:bg-green-700 text-white text-xs gap-x-2"
                 >
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" className="h-5 w-5" />
+
                   Talk to an expert
                 </Button>
               </div>
