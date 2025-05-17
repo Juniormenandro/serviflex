@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Send, X } from 'lucide-react';
+import { Send, X, Trash2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { v4 as uuidv4 } from 'uuid';
 import {
@@ -45,6 +45,13 @@ const Hero = () => {
   }, [messages]);
   
   
+  const whatsappNumber = '353874762708';
+  const openWhatsApp = () => {
+    const mensagem = 'Olá! Gostaria de continuar meu atendimento do ServiFlex pelo WhatsApp.';
+    const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(mensagem)}`;
+    window.open(url, '_blank');
+  };
+
   const handleDeleteChat = () => {
     localStorage.removeItem(`chat_messages_${sessionId}`);
     localStorage.removeItem('chat_session_id');
@@ -138,14 +145,27 @@ const Hero = () => {
             <style>{`.absolute.right-4.top-4 { display: none !important; }`}</style>
 
             <SheetHeader>
-              <SheetTitle className="flex justify-between items-center">
-                <button onClick={handleCloseChat} className="flex items-center space-x-2 text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 transition-all">
-                  <Send className="h-5 w-5 text-green-400" />
-                  <span>ServiFlex Support</span>
-                </button>
-                <Button onClick={handleCloseChat} variant="ghost" size="icon" className="text-slate-400 hover:text-slate-100">
-                  <X className="h-5 w-5" />
-                </Button>
+              <SheetTitle className="flex justify-between items-center w-full">
+                <div className="flex items-center justify-between w-full text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500">
+                  {/* Bloco esquerdo */}
+                  <div className="flex items-center space-x-2">
+                    <Send className="h-5 w-5 text-green-400" />
+                    <span>ServiFlex Support</span>
+                  </div>
+
+                  {/* Bloco direito (lixeira) */}
+                  <button onClick={handleDeleteChat} className="text-red-400 hover:text-red-300">
+                    <Trash2 className="h-5 w-5" />
+                  </button>
+                </div>
+
+
+                <div className="flex items-center gap-2">
+                  {/* Botão deletar conversa */}
+                  <Button onClick={handleCloseChat} variant="ghost" size="icon" className="text-slate-400 hover:text-slate-100">
+                    <X className="h-5 w-5" />
+                  </Button>
+                </div>
               </SheetTitle>
             </SheetHeader>
 
@@ -183,13 +203,26 @@ const Hero = () => {
               </AnimatePresence>
             </div>
 
-            {/* Formulário fixo no fim */}
-            <form onSubmit={handleSendMessage} className=" flex gap-2 mt-4 pt-2 border-t border-slate-700">
+            {/* Botão WhatsApp inteligente */}
+            {messages.some(m => m.sender === 'ai' && m.text.toLowerCase().includes('whatsapp')) && (
+              <div className="text-center mt-6">
+                <p className="text-slate-400 mb-2">Deseja continuar com um atendente?</p>
+                <Button
+                  onClick={openWhatsApp}
+                  className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg"
+                >
+                  Falar com um especialista
+                </Button>
+              </div>
+            )}
+
+            {/* Formulário fixo */}
+            <form onSubmit={handleSendMessage} className="flex gap-2 mt-4 pt-2 border-t border-slate-700">
               <Input
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 placeholder="Type your message..."
-                className=" text-base flex-grow  bg-slate-700/50 border-slate-600 focus:border-green-400"
+                className="text-base flex-grow bg-slate-700/50 border-slate-600 focus:border-green-400"
               />
               <Button
                 type="submit"
