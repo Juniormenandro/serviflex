@@ -24,13 +24,34 @@ const Hero = () => {
     const id = localStorage.getItem('chat_session_id') || uuidv4();
     localStorage.setItem('chat_session_id', id);
     setSessionId(id);
+
+    const savedMessages = localStorage.getItem(`chat_messages_${id}`);
+    if (savedMessages) {
+      setMessages(JSON.parse(savedMessages));
+    }
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem(`chat_messages_${sessionId}`, JSON.stringify(messages));
+    console.log('sessionId: ',sessionId);
+    console.log('messages: ', messages);
+  }, [messages]);
+
 
   useEffect(() => {
     if (messagesContainerRef.current) {
       messagesContainerRef.current.scrollTop = messagesContainerRef.current.scrollHeight;
     }
   }, [messages]);
+  
+  
+  const handleDeleteChat = () => {
+    localStorage.removeItem(`chat_messages_${sessionId}`);
+    localStorage.removeItem('chat_session_id');
+    setIsChatMode(false);
+    setMessages([]);
+    setInputValue('');
+  };
 
   const handleSendMessage = async (e) => {
     e.preventDefault();
@@ -46,12 +67,21 @@ const Hero = () => {
     setInputValue('');
     setLoading(true);
     setIsChatMode(true);
+
+
+  const limitedHistory = messages.slice(-5).map(m => ({
+    role: m.sender === 'user' ? 'user' : 'assistant',
+    content: m.text
+  }));
     try {
       const res = await fetch('https://a176-80-233-33-49.ngrok-free.app/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ session_id: sessionId, message: inputValue })
-      });
+        body: JSON.stringify({
+            message: inputValue,
+            history: limitedHistory
+          })
+        });
 
       const data = await res.json();
       const aiResponse = {
@@ -70,7 +100,7 @@ const Hero = () => {
 
   const handleCloseChat = () => {
     setIsChatMode(false);
-    setMessages([]);
+    // setMessages([]);
     setInputValue('');
   };
 
