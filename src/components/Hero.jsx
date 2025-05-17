@@ -45,7 +45,7 @@ const Hero = () => {
   }, [messages]);
   
   
-  const whatsappNumber = '353874762708';
+  const whatsappNumber = import.meta.env.VITE_whatsappNumber;
   const openWhatsApp = () => {
     const mensagem = 'Olá! Gostaria de continuar meu atendimento do ServiFlex pelo WhatsApp.';
     const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(mensagem)}`;
@@ -60,6 +60,7 @@ const Hero = () => {
     setInputValue('');
   };
 
+  const urlApi = import.meta.env.VITE_urlApi;
   const handleSendMessage = async (e) => {
     e.preventDefault();
     if (!inputValue.trim()) return;
@@ -81,7 +82,7 @@ const Hero = () => {
     content: m.text
   }));
     try {
-      const res = await fetch('https://a176-80-233-33-49.ngrok-free.app/api/chat', {
+      const res = await fetch(urlApi, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -206,12 +207,12 @@ const Hero = () => {
             {/* Botão WhatsApp inteligente */}
             {messages.some(m => m.sender === 'ai' && m.text.toLowerCase().includes('whatsapp')) && (
               <div className="text-center mt-6">
-                <p className="text-slate-400 mb-2">Deseja continuar com um atendente?</p>
+                <p className="text-slate-400 mb-2">Do you want to continue with an attendant?</p>
                 <Button
                   onClick={openWhatsApp}
                   className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg"
                 >
-                  Falar com um especialista
+                  Talk to an expert
                 </Button>
               </div>
             )}
