@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Send, X, Trash2 } from 'lucide-react';
+import { Send, X, Trash2, ArrowLeft } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { v4 as uuidv4 } from 'uuid';
 import {
@@ -51,12 +51,16 @@ const Hero = () => {
   };
 
   const handleDeleteChat = () => {
-    localStorage.removeItem(`chat_messages_${sessionId}`);
-    localStorage.removeItem('chat_session_id');
-    setIsChatMode(false);
-    setMessages([]);
-    setInputValue('');
-  };
+  const confirmed = window.confirm('Are you sure you want to delete this conversation? This action cannot be undone.');
+  if (!confirmed) return;
+
+  localStorage.removeItem(`chat_messages_${sessionId}`);
+  localStorage.removeItem('chat_session_id');
+  setIsChatMode(false);
+  setMessages([]);
+  setInputValue('');
+};
+
 
   const urlApi = import.meta.env.VITE_urlApi;
   const handleSendMessage = async (e) => {
@@ -147,23 +151,17 @@ const Hero = () => {
               <SheetTitle className="flex justify-between items-center w-full">
                 <div className="flex items-center justify-between w-full text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500">
                   {/* Bloco esquerdo */}
-                  <div className="flex items-center space-x-2">
-                    <Send className="h-5 w-5 text-green-400" />
+                  <button onClick={handleDeleteChat} className="text-slate-400 hover:text-green-400 transition-colors">
+                    <ArrowLeft className="h-5 w-5 mr-2" />
+                  </button>
+                  <button onClick={handleDeleteChat} className="flex items-center space-x-2">
                     <span>ServiFlex Support</span>
-                  </div>
+                  </button>
 
                   {/* Bloco direito (lixeira) */}
                   <button onClick={handleDeleteChat} className="text-red-400 hover:text-red-300">
                     <Trash2 className="h-5 w-5" />
                   </button>
-                </div>
-
-
-                <div className="flex items-center gap-2">
-                  {/* Botão deletar conversa */}
-                  <Button onClick={handleCloseChat} variant="ghost" size="icon" className="text-slate-400 hover:text-slate-100">
-                    <X className="h-5 w-5" />
-                  </Button>
                 </div>
               </SheetTitle>
             </SheetHeader>
