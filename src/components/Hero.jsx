@@ -151,7 +151,7 @@ const Hero = () => {
               <SheetTitle className="flex justify-between items-center w-full">
                 <div className="flex items-center justify-between w-full text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500">
                   {/* Bloco esquerdo */}
-                  <button onClick={handleDeleteChat} className="text-slate-400 hover:text-green-400 transition-colors">
+                  <button onClick={handleCloseChat} className="text-slate-400 hover:text-green-400 transition-colors">
                     <ArrowLeft className="h-5 w-5 mr-2" />
                   </button>
                   <button onClick={handleDeleteChat} className="flex items-center space-x-2">
